@@ -7,8 +7,9 @@
 //
 
 #import "ViewController.h"
+#import "GWPhotoAlbumController.h"
 
-@interface ViewController ()
+@interface ViewController () <UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 
 @end
 
@@ -18,6 +19,36 @@
 {
     [super viewDidLoad];
     
+}
+
+/**
+ *  打开相机
+ */
+- (IBAction)openCamera:(UIButton *)sender
+{
+    UIImagePickerController *picker = [[UIImagePickerController alloc] init];
+    picker.delegate = self;
+    picker.allowsEditing = YES;
+    picker.sourceType = UIImagePickerControllerSourceTypeCamera;
+    
+    [self presentViewController:picker animated:YES completion:^{
+        
+    }];
+}
+
+/**
+ *  打开相册
+ */
+- (IBAction)openAlbum:(UIButton *)sender
+{
+    GWPhotoAlbumController *photoAlbumController = [[GWPhotoAlbumController alloc] init];
+    [self.navigationController pushViewController:photoAlbumController animated:YES];
+}
+
+#pragma mark - UIImagePickerDelegate
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingImage:(UIImage *)image editingInfo:(NSDictionary *)editingInfo NS_DEPRECATED_IOS(2_0, 3_0)
+{
+    NSLog(@"%@",image);
 }
 
 @end

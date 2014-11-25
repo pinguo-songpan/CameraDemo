@@ -14,6 +14,9 @@
 		BED37D341A241D32000826D7 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BED37D2D1A241D32000826D7 /* ViewController.m */; };
 		BED37D351A241D32000826D7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BED37D321A241D32000826D7 /* AppDelegate.m */; };
 		BED37D361A241D32000826D7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BED37D331A241D32000826D7 /* main.m */; };
+		BEF321CF1A247EF60087F43A /* GWPhotoAlbumController.m in Sources */ = {isa = PBXBuildFile; fileRef = BEF321CE1A247EF60087F43A /* GWPhotoAlbumController.m */; };
+		BEF321D41A248ABC0087F43A /* GWPhoto.m in Sources */ = {isa = PBXBuildFile; fileRef = BEF321D31A248ABC0087F43A /* GWPhoto.m */; };
+		BEF321D71A248B2B0087F43A /* GWPhotoAlbum.m in Sources */ = {isa = PBXBuildFile; fileRef = BEF321D61A248B2B0087F43A /* GWPhotoAlbum.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +43,14 @@
 		BED37D311A241D32000826D7 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		BED37D321A241D32000826D7 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		BED37D331A241D32000826D7 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		BEF321CD1A247EF60087F43A /* GWPhotoAlbumController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GWPhotoAlbumController.h; sourceTree = "<group>"; };
+		BEF321CE1A247EF60087F43A /* GWPhotoAlbumController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GWPhotoAlbumController.m; sourceTree = "<group>"; };
+		BEF321D01A2480700087F43A /* CameraDemo-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CameraDemo-Prefix.pch"; sourceTree = "<group>"; };
+		BEF321D11A2481800087F43A /* Common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Common.h; sourceTree = "<group>"; };
+		BEF321D21A248ABC0087F43A /* GWPhoto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GWPhoto.h; sourceTree = "<group>"; };
+		BEF321D31A248ABC0087F43A /* GWPhoto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GWPhoto.m; sourceTree = "<group>"; };
+		BEF321D51A248B2B0087F43A /* GWPhotoAlbum.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GWPhotoAlbum.h; sourceTree = "<group>"; };
+		BEF321D61A248B2B0087F43A /* GWPhotoAlbum.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GWPhotoAlbum.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -128,6 +139,7 @@
 		BED37D2A1A241D32000826D7 /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				BEF321D81A248C070087F43A /* Tool */,
 				BED37D2B1A241D32000826D7 /* Controller */,
 				BED37D2E1A241D32000826D7 /* Model */,
 				BED37D2F1A241D32000826D7 /* View */,
@@ -140,6 +152,8 @@
 			children = (
 				BED37D2C1A241D32000826D7 /* ViewController.h */,
 				BED37D2D1A241D32000826D7 /* ViewController.m */,
+				BEF321CD1A247EF60087F43A /* GWPhotoAlbumController.h */,
+				BEF321CE1A247EF60087F43A /* GWPhotoAlbumController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -147,6 +161,10 @@
 		BED37D2E1A241D32000826D7 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				BEF321D21A248ABC0087F43A /* GWPhoto.h */,
+				BEF321D31A248ABC0087F43A /* GWPhoto.m */,
+				BEF321D51A248B2B0087F43A /* GWPhotoAlbum.h */,
+				BEF321D61A248B2B0087F43A /* GWPhotoAlbum.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -163,7 +181,9 @@
 			children = (
 				BED37D311A241D32000826D7 /* AppDelegate.h */,
 				BED37D321A241D32000826D7 /* AppDelegate.m */,
+				BEF321D11A2481800087F43A /* Common.h */,
 				BED37D331A241D32000826D7 /* main.m */,
+				BEF321D01A2480700087F43A /* CameraDemo-Prefix.pch */,
 			);
 			path = Other;
 			sourceTree = "<group>";
@@ -173,6 +193,13 @@
 			children = (
 			);
 			path = Vendors;
+			sourceTree = "<group>";
+		};
+		BEF321D81A248C070087F43A /* Tool */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Tool;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -224,6 +251,7 @@
 				TargetAttributes = {
 					BEC83FAB1A241B8D00822088 = {
 						CreatedOnToolsVersion = 6.1;
+						DevelopmentTeam = KX4LF4Y57W;
 					};
 					BEC83FC41A241B8D00822088 = {
 						CreatedOnToolsVersion = 6.1;
@@ -275,6 +303,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BEF321D71A248B2B0087F43A /* GWPhotoAlbum.m in Sources */,
+				BEF321D41A248ABC0087F43A /* GWPhoto.m in Sources */,
+				BEF321CF1A247EF60087F43A /* GWPhotoAlbumController.m in Sources */,
 				BED37D351A241D32000826D7 /* AppDelegate.m in Sources */,
 				BED37D361A241D32000826D7 /* main.m in Sources */,
 				BED37D341A241D32000826D7 /* ViewController.m in Sources */,
@@ -399,8 +430,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/CameraDemo/Classes/Other/CameraDemo-Prefix.pch";
 				INFOPLIST_FILE = CameraDemo/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -410,8 +443,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/CameraDemo/Classes/Other/CameraDemo-Prefix.pch";
 				INFOPLIST_FILE = CameraDemo/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
