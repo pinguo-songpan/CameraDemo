@@ -8,15 +8,12 @@
 
 #import <Foundation/Foundation.h>
 
-@class ALAssetsGroup;
-
 @interface GWPhotoAlbum : NSObject
+/**  某一相册里的所有照片，装的GWPhoto模型 */
 @property (nonatomic, strong) NSMutableArray *photos;
 @property (nonatomic, copy) NSString *name;
 @property (nonatomic, copy) UIImage *posterImage;
 @property (nonatomic, copy) NSNumber *type;
 @property (nonatomic, copy) NSString *persistentID;
-@property (nonatomic, copy) NSURL *URL;
-
-- (instancetype)initWithGroup:(ALAssetsGroup *)group;
+@property (nonatomic, copy) NSURL *url;
 @end

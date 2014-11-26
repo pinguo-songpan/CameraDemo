@@ -8,6 +8,10 @@
 
 #import "GWPhoto.h"
 
+@interface GWPhoto ()
+@property (nonatomic, strong) ALAsset *asset;
+
+@end
 @implementation GWPhoto
 
 - (id)initWithAsset:(ALAsset *)asset
@@ -15,6 +19,7 @@
     self = [super init];
     if (self) {
         self.asset = asset;
+        self.imageSmail = [[UIImage alloc] initWithCGImage:[asset thumbnail]];
     }
     return self;
 }

@@ -7,15 +7,34 @@
 //
 
 #import "GWPhotoAlbumController.h"
-#import <AssetsLibrary/AssetsLibrary.h>
+#import "GWPhotoViewController.h"
+#import "GWPhotoAlbumTool.h"
 #import "GWPhotoAlbum.h"
 #import "GWPhoto.h"
 
 @interface GWPhotoAlbumController () <UITableViewDataSource, UITableViewDelegate>
 @property (nonatomic, weak) UITableView *mTableView;
+@property (nonatomic, strong) NSArray *mPhotoAlbums;
 @end
 
 @implementation GWPhotoAlbumController
+
+- (instancetype)init
+{
+    self = [super init];
+    if (self) {
+        self.title = @"相薄";
+    }
+    return self;
+}
+
+- (void)setPhotoAlbums:(NSMutableArray *)photoAlbums
+{
+    if (_mPhotoAlbums == nil) {
+        _mPhotoAlbums = [NSMutableArray array];
+    }
+    _mPhotoAlbums = photoAlbums;
+}
 
 - (void)loadView
 {
@@ -30,52 +49,47 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
+    
     // 1.遍历相册里的图片
-    ALAssetsLibrary *assetsLibray = [[ALAssetsLibrary alloc] init];
-    [assetsLibray enumerateGroupsWithTypes:ALAssetsGroupSavedPhotos usingBlock:^(ALAssetsGroup *group, BOOL *stop) {
-        GWPhotoAlbum *photoAlbum = [[GWPhotoAlbum alloc] initWithGroup:group];
-        photoAlbum.name = [group valueForProperty:ALAssetsGroupPropertyName];
-        photoAlbum.posterImage = [[UIImage alloc] initWithCGImage:group.posterImage];
-        photoAlbum.type = [group valueForProperty:ALAssetsGroupPropertyType];
-        photoAlbum.persistentID = [group valueForProperty:ALAssetsGroupPropertyPersistentID];
-        photoAlbum.URL = [group valueForProperty:ALAssetsGroupPropertyURL];
-        
-        [group enumerateAssetsUsingBlock:^(ALAsset *resultAlAsset, NSUInteger index, BOOL *stop) {
-            NSString *assetType = [resultAlAsset valueForProperty:ALAssetPropertyType];
-            if ([assetType isEqualToString:ALAssetTypePhoto]) {
-                GWPhoto *photo = [[GWPhoto alloc] initWithAsset:resultAlAsset];
-                [photoAlbum.photos addObject:photo];
-            }
-            if (index == group.numberOfAssets-1) {
-                *stop = YES;
-            }
-        }];
-        NSLog(@"%@",photoAlbum);
-        
-    } failureBlock:^(NSError *error) {
+    [GWPhotoAlbumTool fetchPhotoAlbumsWithType:ALAssetsGroupAll succes:^(NSArray *photoAlbums) {
+        self.mPhotoAlbums = photoAlbums;
+        [self.mTableView reloadData];
+    } error:^(NSError *error) {
         
     }];
-    
 }
 
 #pragma mark - TableViewDataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 10;
+    return self.mPhotoAlbums.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *identifier = @"identifier";
-    
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
-    
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
     }
-    cell.textLabel.text = [NSString stringWithFormat:@"第%li行",(long)indexPath.row];
+    GWPhotoAlbum *photoAlbum = self.mPhotoAlbums[indexPath.row];
+    cell.textLabel.text = [NSString stringWithFormat:@"%@  %lu张",photoAlbum.name,(unsigned long)photoAlbum.photos.count];
+    cell.imageView.image = photoAlbum.posterImage;
     
     return cell;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return 100.0;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [tableView deselectRowAtIndexPath:indexPath animated:NO];
+    GWPhotoViewController *photoViewController = [[GWPhotoViewController alloc] init];
+    GWPhotoAlbum *photoAlbum = self.mPhotoAlbums[indexPath.row];
+    photoViewController.photos = photoAlbum.photos;
+    [self.navigationController pushViewController:photoViewController animated:YES];
 }
 @end

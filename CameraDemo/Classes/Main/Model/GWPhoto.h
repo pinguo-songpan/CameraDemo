@@ -10,8 +10,9 @@
 #import <AssetsLibrary/AssetsLibrary.h>
 
 @interface GWPhoto : NSObject
-@property (nonatomic, strong) ALAsset *asset;
+
 @property (nonatomic, assign) BOOL isSelected;
+@property (nonatomic, copy) UIImage *imageSmail;
 
 - (id)initWithAsset:(ALAsset *)asset;
 @end

@@ -7,9 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		BEC83FBB1A241B8D00822088 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BEC83FB91A241B8D00822088 /* Main.storyboard */; };
+		BE3DBDA91A25724600390AB7 /* GWPhotoAlbumTool.m in Sources */ = {isa = PBXBuildFile; fileRef = BE3DBDA81A25724600390AB7 /* GWPhotoAlbumTool.m */; };
+		BE3DBDAD1A25AC3200390AB7 /* GWPhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE3DBDAC1A25AC3200390AB7 /* GWPhotoViewController.m */; };
+		BE3DBDB01A25B43E00390AB7 /* GWPhotoViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BE3DBDAF1A25B43E00390AB7 /* GWPhotoViewCell.m */; };
+		BE3DBDB41A25C67D00390AB7 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = BE3DBDB21A25C67D00390AB7 /* LaunchScreen.xib */; };
+		BE3DBDB51A25C67D00390AB7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BE3DBDB31A25C67D00390AB7 /* Main.storyboard */; };
 		BEC83FBD1A241B8D00822088 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BEC83FBC1A241B8D00822088 /* Images.xcassets */; };
-		BEC83FC01A241B8D00822088 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = BEC83FBE1A241B8D00822088 /* LaunchScreen.xib */; };
 		BEC83FCC1A241B8D00822088 /* CameraDemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BEC83FCB1A241B8D00822088 /* CameraDemoTests.m */; };
 		BED37D341A241D32000826D7 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BED37D2D1A241D32000826D7 /* ViewController.m */; };
 		BED37D351A241D32000826D7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BED37D321A241D32000826D7 /* AppDelegate.m */; };
@@ -30,11 +33,18 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		BE3DBDA71A25724600390AB7 /* GWPhotoAlbumTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GWPhotoAlbumTool.h; sourceTree = "<group>"; };
+		BE3DBDA81A25724600390AB7 /* GWPhotoAlbumTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GWPhotoAlbumTool.m; sourceTree = "<group>"; };
+		BE3DBDAA1A25732A00390AB7 /* GWSingleton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GWSingleton.h; sourceTree = "<group>"; };
+		BE3DBDAB1A25AC3200390AB7 /* GWPhotoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GWPhotoViewController.h; sourceTree = "<group>"; };
+		BE3DBDAC1A25AC3200390AB7 /* GWPhotoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GWPhotoViewController.m; sourceTree = "<group>"; };
+		BE3DBDAE1A25B43E00390AB7 /* GWPhotoViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GWPhotoViewCell.h; sourceTree = "<group>"; };
+		BE3DBDAF1A25B43E00390AB7 /* GWPhotoViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GWPhotoViewCell.m; sourceTree = "<group>"; };
+		BE3DBDB21A25C67D00390AB7 /* LaunchScreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LaunchScreen.xib; sourceTree = "<group>"; };
+		BE3DBDB31A25C67D00390AB7 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		BEC83FAC1A241B8D00822088 /* CameraDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CameraDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BEC83FB01A241B8D00822088 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		BEC83FBA1A241B8D00822088 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		BEC83FBC1A241B8D00822088 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		BEC83FBF1A241B8D00822088 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		BEC83FC51A241B8D00822088 /* CameraDemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CameraDemoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BEC83FCA1A241B8D00822088 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BEC83FCB1A241B8D00822088 /* CameraDemoTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CameraDemoTests.m; sourceTree = "<group>"; };
@@ -71,6 +81,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		BE3DBDB11A25C67D00390AB7 /* Xibs */ = {
+			isa = PBXGroup;
+			children = (
+				BE3DBDB21A25C67D00390AB7 /* LaunchScreen.xib */,
+				BE3DBDB31A25C67D00390AB7 /* Main.storyboard */,
+			);
+			path = Xibs;
+			sourceTree = "<group>";
+		};
 		BEC83FA31A241B8D00822088 = {
 			isa = PBXGroup;
 			children = (
@@ -92,6 +111,7 @@
 		BEC83FAE1A241B8D00822088 /* CameraDemo */ = {
 			isa = PBXGroup;
 			children = (
+				BE3DBDB11A25C67D00390AB7 /* Xibs */,
 				BED37D291A241D32000826D7 /* Classes */,
 				BEC83FAF1A241B8D00822088 /* Supporting Files */,
 			);
@@ -102,8 +122,6 @@
 			isa = PBXGroup;
 			children = (
 				BEC83FBC1A241B8D00822088 /* Images.xcassets */,
-				BEC83FB91A241B8D00822088 /* Main.storyboard */,
-				BEC83FBE1A241B8D00822088 /* LaunchScreen.xib */,
 				BEC83FB01A241B8D00822088 /* Info.plist */,
 			);
 			name = "Supporting Files";
@@ -154,6 +172,8 @@
 				BED37D2D1A241D32000826D7 /* ViewController.m */,
 				BEF321CD1A247EF60087F43A /* GWPhotoAlbumController.h */,
 				BEF321CE1A247EF60087F43A /* GWPhotoAlbumController.m */,
+				BE3DBDAB1A25AC3200390AB7 /* GWPhotoViewController.h */,
+				BE3DBDAC1A25AC3200390AB7 /* GWPhotoViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -172,6 +192,8 @@
 		BED37D2F1A241D32000826D7 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				BE3DBDAE1A25B43E00390AB7 /* GWPhotoViewCell.h */,
+				BE3DBDAF1A25B43E00390AB7 /* GWPhotoViewCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -184,6 +206,7 @@
 				BEF321D11A2481800087F43A /* Common.h */,
 				BED37D331A241D32000826D7 /* main.m */,
 				BEF321D01A2480700087F43A /* CameraDemo-Prefix.pch */,
+				BE3DBDAA1A25732A00390AB7 /* GWSingleton.h */,
 			);
 			path = Other;
 			sourceTree = "<group>";
@@ -198,6 +221,8 @@
 		BEF321D81A248C070087F43A /* Tool */ = {
 			isa = PBXGroup;
 			children = (
+				BE3DBDA71A25724600390AB7 /* GWPhotoAlbumTool.h */,
+				BE3DBDA81A25724600390AB7 /* GWPhotoAlbumTool.m */,
 			);
 			path = Tool;
 			sourceTree = "<group>";
@@ -283,8 +308,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BEC83FBB1A241B8D00822088 /* Main.storyboard in Resources */,
-				BEC83FC01A241B8D00822088 /* LaunchScreen.xib in Resources */,
+				BE3DBDB41A25C67D00390AB7 /* LaunchScreen.xib in Resources */,
+				BE3DBDB51A25C67D00390AB7 /* Main.storyboard in Resources */,
 				BEC83FBD1A241B8D00822088 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -304,8 +329,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				BEF321D71A248B2B0087F43A /* GWPhotoAlbum.m in Sources */,
+				BE3DBDAD1A25AC3200390AB7 /* GWPhotoViewController.m in Sources */,
 				BEF321D41A248ABC0087F43A /* GWPhoto.m in Sources */,
 				BEF321CF1A247EF60087F43A /* GWPhotoAlbumController.m in Sources */,
+				BE3DBDB01A25B43E00390AB7 /* GWPhotoViewCell.m in Sources */,
+				BE3DBDA91A25724600390AB7 /* GWPhotoAlbumTool.m in Sources */,
 				BED37D351A241D32000826D7 /* AppDelegate.m in Sources */,
 				BED37D361A241D32000826D7 /* main.m in Sources */,
 				BED37D341A241D32000826D7 /* ViewController.m in Sources */,
@@ -329,25 +357,6 @@
 			targetProxy = BEC83FC61A241B8D00822088 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
-
-/* Begin PBXVariantGroup section */
-		BEC83FB91A241B8D00822088 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				BEC83FBA1A241B8D00822088 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		BEC83FBE1A241B8D00822088 /* LaunchScreen.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				BEC83FBF1A241B8D00822088 /* Base */,
-			);
-			name = LaunchScreen.xib;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		BEC83FCD1A241B8D00822088 /* Debug */ = {
