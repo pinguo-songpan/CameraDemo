@@ -7,7 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-
+/**
+ *  相册控制器
+ */
 @interface GWPhotoAlbumController : UIViewController
 
 @end

@@ -17,7 +17,8 @@
 - (id)initWithAsset:(ALAsset *)asset
 {
     self = [super init];
-    if (self) {
+    if (self)
+    {
         self.asset = asset;
         self.imageSmail = [[UIImage alloc] initWithCGImage:[asset thumbnail]];
     }

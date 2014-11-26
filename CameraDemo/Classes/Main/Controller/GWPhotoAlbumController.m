@@ -22,18 +22,20 @@
 - (instancetype)init
 {
     self = [super init];
-    if (self) {
+    if (self)
+    {
         self.title = @"相薄";
     }
     return self;
 }
 
-- (void)setPhotoAlbums:(NSMutableArray *)photoAlbums
+- (NSArray *)mPhotoAlbums
 {
-    if (_mPhotoAlbums == nil) {
-        _mPhotoAlbums = [NSMutableArray array];
+    if (_mPhotoAlbums == nil)
+    {
+        self.mPhotoAlbums = [NSArray array];
     }
-    _mPhotoAlbums = photoAlbums;
+    return _mPhotoAlbums;
 }
 
 - (void)loadView
@@ -69,7 +71,8 @@
 {
     static NSString *identifier = @"identifier";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
-    if (cell == nil) {
+    if (cell == nil)
+    {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
     }
     GWPhotoAlbum *photoAlbum = self.mPhotoAlbums[indexPath.row];

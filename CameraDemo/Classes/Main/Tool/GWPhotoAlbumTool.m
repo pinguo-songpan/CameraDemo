@@ -43,7 +43,8 @@ static GWPhotoAlbumTool *_instance = nil;
 - (instancetype)init
 {
     self = [super init];
-    if (self) {
+    if (self)
+    {
         _assetsLibrary = [[ALAssetsLibrary alloc] init];
     }
     return self;
@@ -53,10 +54,12 @@ static GWPhotoAlbumTool *_instance = nil;
 {
     NSMutableArray *photoAlbums = [NSMutableArray array];
     [GWPhotoAlbumTool fetchPhotoAlbumWithType:groupType succes:^(GWPhotoAlbum *photoAlbum) {
-        if (photoAlbum.photos.count > 0) {
+        if (photoAlbum.photos.count > 0)
+        {
             [photoAlbums addObject:photoAlbum];
         }
-        if (success!=nil && photoAlbum.name == nil) {
+        if (success!=nil && photoAlbum.name == nil)
+        {
             success(photoAlbums);
         }
     } error:^(NSError *error) {
@@ -79,21 +82,25 @@ static GWPhotoAlbumTool *_instance = nil;
         
         NSMutableArray *photos = [NSMutableArray array];
         [group enumerateAssetsUsingBlock:^(ALAsset *resultAlAsset, NSUInteger index, BOOL *stop) {
-            if (index == group.numberOfAssets-1) {
+            if (index == group.numberOfAssets-1)
+            {
                 *stop = YES;
             }
             NSString *assetType = [resultAlAsset valueForProperty:ALAssetPropertyType];
-            if ([assetType isEqualToString:ALAssetTypePhoto]) {
+            if ([assetType isEqualToString:ALAssetTypePhoto])
+            {
                 GWPhoto *photo = [[GWPhoto alloc] initWithAsset:resultAlAsset];
                 [photos addObject:photo];
             }
         }];
         photoAlbum.photos = photos;
-            if (success) {
+            if (success)
+            {
                 success(photoAlbum);
             }
     } failureBlock:^(NSError *error){
-        if (error) {
+        if (error)
+        {
             errorBlock(error);
         }
     }];

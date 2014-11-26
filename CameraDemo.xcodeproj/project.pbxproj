@@ -111,8 +111,8 @@
 		BEC83FAE1A241B8D00822088 /* CameraDemo */ = {
 			isa = PBXGroup;
 			children = (
-				BE3DBDB11A25C67D00390AB7 /* Xibs */,
 				BED37D291A241D32000826D7 /* Classes */,
+				BE3DBDB11A25C67D00390AB7 /* Xibs */,
 				BEC83FAF1A241B8D00822088 /* Supporting Files */,
 			);
 			path = CameraDemo;
@@ -201,11 +201,11 @@
 		BED37D301A241D32000826D7 /* Other */ = {
 			isa = PBXGroup;
 			children = (
+				BEF321D01A2480700087F43A /* CameraDemo-Prefix.pch */,
+				BED37D331A241D32000826D7 /* main.m */,
 				BED37D311A241D32000826D7 /* AppDelegate.h */,
 				BED37D321A241D32000826D7 /* AppDelegate.m */,
 				BEF321D11A2481800087F43A /* Common.h */,
-				BED37D331A241D32000826D7 /* main.m */,
-				BEF321D01A2480700087F43A /* CameraDemo-Prefix.pch */,
 				BE3DBDAA1A25732A00390AB7 /* GWSingleton.h */,
 			);
 			path = Other;

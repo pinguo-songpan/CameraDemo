@@ -20,10 +20,9 @@
         self.photoImageButton.frame = CGRectMake(0, 0, kPhotoW, kPhotoH);
         [self addSubview:self.photoImageButton];
         
-        self.selectButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        self.selectButton.userInteractionEnabled = NO;
-        self.selectButton.frame = CGRectMake(kPhotoW * 0.6, kPhotoH * 0.6, 22, 22);
-        [self addSubview:self.selectButton];
+        self.selectedView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, kPhotoW, kPhotoH)];
+        self.selectedView.image = [UIImage imageNamed:@"c360_cloud_small_image_selected"];
+        [self.photoImageButton addSubview:self.selectedView];
     }
     return self;
 }
@@ -32,5 +31,14 @@
 {
     _photo = photo;
     [self.photoImageButton setImage:photo.imageSmail forState:UIControlStateNormal];
+    if (photo.isSelected)
+    {
+        self.selectedView.hidden = NO;
+    }
+    else
+    {
+        self.selectedView.hidden = YES;
+    }
+    
 }
 @end

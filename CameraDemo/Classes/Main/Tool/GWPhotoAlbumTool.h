@@ -17,7 +17,9 @@ typedef void (^PhotoAlbumFailureBlock)(NSError *error);
 #import <Foundation/Foundation.h>
 #import <AssetsLibrary/AssetsLibrary.h>
 
-
+/**
+ *  相册工具类
+ */
 @interface GWPhotoAlbumTool : NSObject
 
 @property (nonatomic, strong) ALAssetsLibrary *assetsLibrary;

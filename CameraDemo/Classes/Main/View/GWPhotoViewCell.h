@@ -13,6 +13,6 @@
 
 @interface GWPhotoViewCell : UICollectionViewCell
 @property (nonatomic, strong) UIButton *photoImageButton;
-@property (nonatomic, strong) UIButton *selectButton;
+@property (nonatomic, strong) UIImageView *selectedView;
 @property (nonatomic, strong) GWPhoto *photo;
 @end

@@ -17,7 +17,8 @@
 
 - (void)setPhotos:(NSMutableArray *)photos
 {
-    if (_photos == nil) {
+    if (_photos == nil)
+    {
         _photos = [NSMutableArray array];
     }
     _photos = photos;
