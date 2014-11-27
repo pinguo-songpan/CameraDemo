@@ -9,6 +9,7 @@
 #define kMaxPhotoNumber 10
 
 #import "GWPhotoViewController.h"
+#import "GWPhotoEditViewController.h"
 #import "GWPhotoViewCell.h"
 #import "GWPhoto.h"
 
@@ -26,6 +27,8 @@
     if (self)
     {
         self.title = @"照片";
+        UIBarButtonItem *rightItem = [[UIBarButtonItem alloc] initWithTitle:@"编辑" style:UIBarButtonItemStylePlain target:self action:@selector(rightItemClick:)];
+        [self.navigationItem setRightBarButtonItem:rightItem];
     }
     return self;
 }
@@ -107,6 +110,16 @@
             UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"通知" message:msg delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
             [alertView show];
         }
+    }
+}
+
+- (void)rightItemClick:(UIButton *)button
+{
+    if (self.selectedPhotos > 0)
+    {
+        GWPhotoEditViewController *photoEdit = [[GWPhotoEditViewController alloc] init];
+        photoEdit.photo = self.selectedPhotos.firstObject;
+        [self.navigationController pushViewController:photoEdit animated:YES];
     }
 }
 

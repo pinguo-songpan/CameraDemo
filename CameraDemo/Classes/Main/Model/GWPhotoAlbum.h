@@ -7,7 +7,9 @@
 //  相册模型，用来装相片分组
 
 #import <Foundation/Foundation.h>
-
+/**
+ *  相册模型
+ */
 @interface GWPhotoAlbum : NSObject
 /**  某一相册里的所有照片，装的GWPhoto模型 */
 @property (nonatomic, strong) NSMutableArray *photos;

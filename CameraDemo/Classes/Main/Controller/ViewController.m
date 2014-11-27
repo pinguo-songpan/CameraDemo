@@ -8,6 +8,7 @@
 
 #import "ViewController.h"
 #import "GWPhotoAlbumController.h"
+#import "GWPhotoViewController.h"
 
 @interface ViewController () <UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 
@@ -19,7 +20,6 @@
 {
     [super viewDidLoad];
     self.title = @"相薄";
-    
 }
 
 /**
@@ -45,6 +45,14 @@
     GWPhotoAlbumController *photoAlbumController = [[GWPhotoAlbumController alloc] init];
     [self.navigationController pushViewController:photoAlbumController animated:YES];
 }
+
+- (IBAction)clipImage:(UIButton *)sender
+{
+    GWPhotoAlbumController *photoAlbumController = [[GWPhotoAlbumController alloc] init];
+    [self.navigationController pushViewController:photoAlbumController animated:YES];
+    
+}
+
 
 #pragma mark - UIImagePickerDelegate
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingImage:(UIImage *)image editingInfo:(NSDictionary *)editingInfo NS_DEPRECATED_IOS(2_0, 3_0)

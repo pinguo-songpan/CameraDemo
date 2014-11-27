@@ -31,6 +31,10 @@ typedef void (^PhotoAlbumFailureBlock)(NSError *error);
 
 /**
  *  获取需要的相册
+ *
+ *  @param groupType  资源组的数据类型，参数不能为空
+ *  @param success    成功的Block
+ *  @param errorBlock 失败的Block
  */
 + (void)fetchPhotoAlbumsWithType:(ALAssetsGroupType)groupType succes:(PhotoAlbumsSuccessBlock)success error:(PhotoAlbumsFailureBlock)errorBlock;
 @end

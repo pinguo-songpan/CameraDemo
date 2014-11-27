@@ -21,6 +21,8 @@
     {
         self.asset = asset;
         self.imageSmail = [[UIImage alloc] initWithCGImage:[asset thumbnail]];
+        ALAssetRepresentation *assetRep = [asset defaultRepresentation];
+        self.imageSource = [[UIImage alloc] initWithCGImage:[assetRep fullResolutionImage]];
     }
     return self;
 }
@@ -29,4 +31,6 @@
 {
     return [NSString stringWithFormat:@"{isSelected = %d, \nasset = %@}", self.isSelected, self.asset];
 }
+
+
 @end

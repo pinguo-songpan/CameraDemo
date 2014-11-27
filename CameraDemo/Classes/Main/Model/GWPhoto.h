@@ -14,7 +14,17 @@
 @interface GWPhoto : NSObject
 
 @property (nonatomic, assign) BOOL isSelected;
+
+/**
+ *  小图
+ */
 @property (nonatomic, copy) UIImage *imageSmail;
+
+/**
+ *  原图
+ */
+@property (nonatomic, copy) UIImage *imageSource;
+
 /**
  *  用ALAsset初始化模型
  */

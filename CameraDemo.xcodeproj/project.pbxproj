@@ -14,6 +14,7 @@
 		BE3DBDB51A25C67D00390AB7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BE3DBDB31A25C67D00390AB7 /* Main.storyboard */; };
 		BE409EE31A26C82400ED9AC9 /* GWPhotoAlbumViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BE409EE21A26C82400ED9AC9 /* GWPhotoAlbumViewCell.m */; };
 		BE409EE51A26CA1F00ED9AC9 /* GWPhotoAlbumViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BE409EE41A26CA1F00ED9AC9 /* GWPhotoAlbumViewCell.xib */; };
+		BE90E4CB1A2708F200CFD184 /* GWPhotoEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE90E4CA1A2708F200CFD184 /* GWPhotoEditViewController.m */; };
 		BEC83FBD1A241B8D00822088 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BEC83FBC1A241B8D00822088 /* Images.xcassets */; };
 		BEC83FCC1A241B8D00822088 /* CameraDemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BEC83FCB1A241B8D00822088 /* CameraDemoTests.m */; };
 		BED37D341A241D32000826D7 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BED37D2D1A241D32000826D7 /* ViewController.m */; };
@@ -47,6 +48,8 @@
 		BE409EE11A26C82400ED9AC9 /* GWPhotoAlbumViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GWPhotoAlbumViewCell.h; sourceTree = "<group>"; };
 		BE409EE21A26C82400ED9AC9 /* GWPhotoAlbumViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GWPhotoAlbumViewCell.m; sourceTree = "<group>"; };
 		BE409EE41A26CA1F00ED9AC9 /* GWPhotoAlbumViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GWPhotoAlbumViewCell.xib; sourceTree = "<group>"; };
+		BE90E4C91A2708F200CFD184 /* GWPhotoEditViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GWPhotoEditViewController.h; sourceTree = "<group>"; };
+		BE90E4CA1A2708F200CFD184 /* GWPhotoEditViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GWPhotoEditViewController.m; sourceTree = "<group>"; };
 		BEC83FAC1A241B8D00822088 /* CameraDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CameraDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BEC83FB01A241B8D00822088 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BEC83FBC1A241B8D00822088 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
@@ -180,6 +183,8 @@
 				BEF321CE1A247EF60087F43A /* GWPhotoAlbumController.m */,
 				BE3DBDAB1A25AC3200390AB7 /* GWPhotoViewController.h */,
 				BE3DBDAC1A25AC3200390AB7 /* GWPhotoViewController.m */,
+				BE90E4C91A2708F200CFD184 /* GWPhotoEditViewController.h */,
+				BE90E4CA1A2708F200CFD184 /* GWPhotoEditViewController.m */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -345,6 +350,7 @@
 				BE3DBDA91A25724600390AB7 /* GWPhotoAlbumTool.m in Sources */,
 				BED37D351A241D32000826D7 /* AppDelegate.m in Sources */,
 				BED37D361A241D32000826D7 /* main.m in Sources */,
+				BE90E4CB1A2708F200CFD184 /* GWPhotoEditViewController.m in Sources */,
 				BED37D341A241D32000826D7 /* ViewController.m in Sources */,
 				BE409EE31A26C82400ED9AC9 /* GWPhotoAlbumViewCell.m in Sources */,
 			);

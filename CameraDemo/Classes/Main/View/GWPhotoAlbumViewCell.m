@@ -37,11 +37,11 @@
     
     // 图片添加半透明遮盖
     UIView *cover = [[UIView alloc] initWithFrame:self.mImageView.bounds];
-    cover.backgroundColor = [[UIColor darkTextColor] colorWithAlphaComponent:0.2];
+    cover.backgroundColor = [[UIColor darkTextColor] colorWithAlphaComponent:0.3];
     [self.mImageView addSubview:cover];
    
     UIView *cover2 = [[UIView alloc] initWithFrame:self.mImageView.bounds];
-    cover2.backgroundColor = [[UIColor darkTextColor] colorWithAlphaComponent:0.2];
+    cover2.backgroundColor = [[UIColor darkTextColor] colorWithAlphaComponent:0.3];
     [self.mBackgroundImageView addSubview:cover2];
 }
 
@@ -49,9 +49,9 @@
 {
     _photoAlbum = photoAlbum;
     
-    GWPhoto *photo = [photoAlbum.photos lastObject];
+    GWPhoto *photo = [photoAlbum.photos firstObject];
     self.mBackgroundImageView.image = photo.imageSmail;
-    self.mImageView.image = photoAlbum.posterImage;
+    self.mImageView.image = [[photoAlbum.photos lastObject] imageSmail];
     self.mCount.text = [NSString stringWithFormat:@"%ld",photoAlbum.photos.count];
     self.mName.text = photoAlbum.name;
 }

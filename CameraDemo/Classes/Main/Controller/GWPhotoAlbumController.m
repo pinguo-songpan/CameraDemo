@@ -96,13 +96,4 @@ static NSString *ID = @"identifierCollectionViewCell";
     photoViewController.photos = [self.mPhotoAlbums[indexPath.row] photos];
     [self.navigationController pushViewController:photoViewController animated:YES];
 }
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    [tableView deselectRowAtIndexPath:indexPath animated:NO];
-    GWPhotoViewController *photoViewController = [[GWPhotoViewController alloc] init];
-    GWPhotoAlbum *photoAlbum = self.mPhotoAlbums[indexPath.row];
-    photoViewController.photos = photoAlbum.photos;
-    [self.navigationController pushViewController:photoViewController animated:YES];
-}
 @end
