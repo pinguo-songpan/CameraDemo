@@ -54,7 +54,7 @@ static GWPhotoAlbumTool *_instance = nil;
 {
     NSMutableArray *photoAlbums = [NSMutableArray array];
     [GWPhotoAlbumTool fetchPhotoAlbumWithType:groupType succes:^(GWPhotoAlbum *photoAlbum) {
-        if (photoAlbum.photos.count > 0)
+        if (photoAlbum.name != nil)
         {
             [photoAlbums addObject:photoAlbum];
         }
@@ -72,14 +72,12 @@ static GWPhotoAlbumTool *_instance = nil;
 {
     GWPhotoAlbumTool *photoAlbumTool = [GWPhotoAlbumTool sharePhotoAlbumTool];
     [photoAlbumTool.assetsLibrary enumerateGroupsWithTypes:groupType usingBlock:^(ALAssetsGroup *group, BOOL *stop) {
-        
         GWPhotoAlbum *photoAlbum = [[GWPhotoAlbum alloc] init];
         photoAlbum.name = [group valueForProperty:ALAssetsGroupPropertyName];
         photoAlbum.posterImage = [[UIImage alloc] initWithCGImage:group.posterImage];
         photoAlbum.type = [group valueForProperty:ALAssetsGroupPropertyType];
         photoAlbum.persistentID = [group valueForProperty:ALAssetsGroupPropertyPersistentID];
         photoAlbum.url = [group valueForProperty:ALAssetsGroupPropertyURL];
-        
         NSMutableArray *photos = [NSMutableArray array];
         [group enumerateAssetsUsingBlock:^(ALAsset *resultAlAsset, NSUInteger index, BOOL *stop) {
             if (index == group.numberOfAssets-1)

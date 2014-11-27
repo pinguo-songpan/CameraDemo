@@ -12,6 +12,8 @@
 		BE3DBDB01A25B43E00390AB7 /* GWPhotoViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BE3DBDAF1A25B43E00390AB7 /* GWPhotoViewCell.m */; };
 		BE3DBDB41A25C67D00390AB7 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = BE3DBDB21A25C67D00390AB7 /* LaunchScreen.xib */; };
 		BE3DBDB51A25C67D00390AB7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BE3DBDB31A25C67D00390AB7 /* Main.storyboard */; };
+		BE409EE31A26C82400ED9AC9 /* GWPhotoAlbumViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BE409EE21A26C82400ED9AC9 /* GWPhotoAlbumViewCell.m */; };
+		BE409EE51A26CA1F00ED9AC9 /* GWPhotoAlbumViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BE409EE41A26CA1F00ED9AC9 /* GWPhotoAlbumViewCell.xib */; };
 		BEC83FBD1A241B8D00822088 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BEC83FBC1A241B8D00822088 /* Images.xcassets */; };
 		BEC83FCC1A241B8D00822088 /* CameraDemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BEC83FCB1A241B8D00822088 /* CameraDemoTests.m */; };
 		BED37D341A241D32000826D7 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BED37D2D1A241D32000826D7 /* ViewController.m */; };
@@ -42,6 +44,9 @@
 		BE3DBDAF1A25B43E00390AB7 /* GWPhotoViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GWPhotoViewCell.m; sourceTree = "<group>"; };
 		BE3DBDB21A25C67D00390AB7 /* LaunchScreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LaunchScreen.xib; sourceTree = "<group>"; };
 		BE3DBDB31A25C67D00390AB7 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		BE409EE11A26C82400ED9AC9 /* GWPhotoAlbumViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GWPhotoAlbumViewCell.h; sourceTree = "<group>"; };
+		BE409EE21A26C82400ED9AC9 /* GWPhotoAlbumViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GWPhotoAlbumViewCell.m; sourceTree = "<group>"; };
+		BE409EE41A26CA1F00ED9AC9 /* GWPhotoAlbumViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GWPhotoAlbumViewCell.xib; sourceTree = "<group>"; };
 		BEC83FAC1A241B8D00822088 /* CameraDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CameraDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BEC83FB01A241B8D00822088 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BEC83FBC1A241B8D00822088 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
@@ -86,6 +91,7 @@
 			children = (
 				BE3DBDB21A25C67D00390AB7 /* LaunchScreen.xib */,
 				BE3DBDB31A25C67D00390AB7 /* Main.storyboard */,
+				BE409EE41A26CA1F00ED9AC9 /* GWPhotoAlbumViewCell.xib */,
 			);
 			path = Xibs;
 			sourceTree = "<group>";
@@ -194,6 +200,8 @@
 			children = (
 				BE3DBDAE1A25B43E00390AB7 /* GWPhotoViewCell.h */,
 				BE3DBDAF1A25B43E00390AB7 /* GWPhotoViewCell.m */,
+				BE409EE11A26C82400ED9AC9 /* GWPhotoAlbumViewCell.h */,
+				BE409EE21A26C82400ED9AC9 /* GWPhotoAlbumViewCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -309,6 +317,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BE3DBDB41A25C67D00390AB7 /* LaunchScreen.xib in Resources */,
+				BE409EE51A26CA1F00ED9AC9 /* GWPhotoAlbumViewCell.xib in Resources */,
 				BE3DBDB51A25C67D00390AB7 /* Main.storyboard in Resources */,
 				BEC83FBD1A241B8D00822088 /* Images.xcassets in Resources */,
 			);
@@ -337,6 +346,7 @@
 				BED37D351A241D32000826D7 /* AppDelegate.m in Sources */,
 				BED37D361A241D32000826D7 /* main.m in Sources */,
 				BED37D341A241D32000826D7 /* ViewController.m in Sources */,
+				BE409EE31A26C82400ED9AC9 /* GWPhotoAlbumViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

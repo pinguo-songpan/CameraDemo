@@ -10,10 +10,12 @@
 #import "GWPhotoViewController.h"
 #import "GWPhotoAlbumTool.h"
 #import "GWPhotoAlbum.h"
-#import "GWPhoto.h"
+#import "GWPhotoAlbumViewCell.h"
 
-@interface GWPhotoAlbumController () <UITableViewDataSource, UITableViewDelegate>
-@property (nonatomic, weak) UITableView *mTableView;
+static NSString *ID = @"identifierCollectionViewCell";
+
+@interface GWPhotoAlbumController () <UICollectionViewDataSource, UICollectionViewDelegate>
+@property (nonatomic, weak) UICollectionView *mCollectionView;
 @property (nonatomic, strong) NSArray *mPhotoAlbums;
 @end
 
@@ -40,12 +42,21 @@
 
 - (void)loadView
 {
-    UITableView *tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, iPhoneW, iPhoneH)];
-    tableView.delegate = self;
-    tableView.dataSource = self;
+    UICollectionViewFlowLayout *flowLayout = [[UICollectionViewFlowLayout alloc] init];
+    flowLayout.itemSize = CGSizeMake(kPhotoAlbumWith, kPhotoAlbumHeight);
+    flowLayout.minimumInteritemSpacing = 2;
+    flowLayout.minimumLineSpacing = 5;
+    flowLayout.scrollDirection = UICollectionViewScrollDirectionVertical;
     
-    self.view = tableView;
-    self.mTableView = tableView;
+    UICollectionView *collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, 0, iPhoneW, iPhoneH) collectionViewLayout:flowLayout];
+    collectionView.alwaysBounceVertical = YES;
+    collectionView.backgroundColor = [UIColor whiteColor];
+    [collectionView registerNib:[UINib nibWithNibName:@"GWPhotoAlbumViewCell" bundle:nil] forCellWithReuseIdentifier:ID];
+    collectionView.delegate = self;
+    collectionView.dataSource = self;
+    
+    self.view = collectionView;
+    self.mCollectionView = collectionView;
 }
 
 - (void)viewDidLoad
@@ -55,36 +66,35 @@
     // 1.遍历相册里的图片
     [GWPhotoAlbumTool fetchPhotoAlbumsWithType:ALAssetsGroupAll succes:^(NSArray *photoAlbums) {
         self.mPhotoAlbums = photoAlbums;
-        [self.mTableView reloadData];
+        [self.mCollectionView reloadData];
     } error:^(NSError *error) {
         
     }];
 }
 
-#pragma mark - TableViewDataSource
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+#pragma mark - CollectioinView DataSource
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
     return self.mPhotoAlbums.count;
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+- (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *identifier = @"identifier";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
+    GWPhotoAlbumViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:ID forIndexPath:indexPath];
     if (cell == nil)
     {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:identifier];
+        cell = [[GWPhotoAlbumViewCell alloc] initWithFrame:CGRectMake(0, 0, kPhotoAlbumWith, kPhotoAlbumHeight)];
     }
-    GWPhotoAlbum *photoAlbum = self.mPhotoAlbums[indexPath.row];
-    cell.textLabel.text = [NSString stringWithFormat:@"%@  %lu张",photoAlbum.name,(unsigned long)photoAlbum.photos.count];
-    cell.imageView.image = photoAlbum.posterImage;
-    
+    cell.photoAlbum = self.mPhotoAlbums[indexPath.row];
     return cell;
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+#pragma mark - CollectioinView Delegate
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 100.0;
+    GWPhotoViewController *photoViewController = [[GWPhotoViewController alloc] init];
+    photoViewController.photos = [self.mPhotoAlbums[indexPath.row] photos];
+    [self.navigationController pushViewController:photoViewController animated:YES];
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
