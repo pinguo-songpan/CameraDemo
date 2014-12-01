@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BE1EC0EE1A2C684900108FD0 /* GWCornerView.m in Sources */ = {isa = PBXBuildFile; fileRef = BE1EC0ED1A2C684900108FD0 /* GWCornerView.m */; };
 		BE3DBDA91A25724600390AB7 /* GWPhotoAlbumTool.m in Sources */ = {isa = PBXBuildFile; fileRef = BE3DBDA81A25724600390AB7 /* GWPhotoAlbumTool.m */; };
 		BE3DBDAD1A25AC3200390AB7 /* GWPhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE3DBDAC1A25AC3200390AB7 /* GWPhotoViewController.m */; };
 		BE3DBDB01A25B43E00390AB7 /* GWPhotoViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BE3DBDAF1A25B43E00390AB7 /* GWPhotoViewCell.m */; };
@@ -14,6 +15,8 @@
 		BE3DBDB51A25C67D00390AB7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BE3DBDB31A25C67D00390AB7 /* Main.storyboard */; };
 		BE409EE31A26C82400ED9AC9 /* GWPhotoAlbumViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BE409EE21A26C82400ED9AC9 /* GWPhotoAlbumViewCell.m */; };
 		BE409EE51A26CA1F00ED9AC9 /* GWPhotoAlbumViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BE409EE41A26CA1F00ED9AC9 /* GWPhotoAlbumViewCell.xib */; };
+		BE7885281A2B50C7002B742D /* GWImageClipView.m in Sources */ = {isa = PBXBuildFile; fileRef = BE7885271A2B50C7002B742D /* GWImageClipView.m */; };
+		BE78852B1A2B5199002B742D /* GWImageClipRectView.m in Sources */ = {isa = PBXBuildFile; fileRef = BE78852A1A2B5199002B742D /* GWImageClipRectView.m */; };
 		BE90E4CB1A2708F200CFD184 /* GWPhotoEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE90E4CA1A2708F200CFD184 /* GWPhotoEditViewController.m */; };
 		BEC83FBD1A241B8D00822088 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BEC83FBC1A241B8D00822088 /* Images.xcassets */; };
 		BEC83FCC1A241B8D00822088 /* CameraDemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BEC83FCB1A241B8D00822088 /* CameraDemoTests.m */; };
@@ -36,6 +39,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		BE1EC0EC1A2C684900108FD0 /* GWCornerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GWCornerView.h; sourceTree = "<group>"; };
+		BE1EC0ED1A2C684900108FD0 /* GWCornerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GWCornerView.m; sourceTree = "<group>"; };
 		BE3DBDA71A25724600390AB7 /* GWPhotoAlbumTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GWPhotoAlbumTool.h; sourceTree = "<group>"; };
 		BE3DBDA81A25724600390AB7 /* GWPhotoAlbumTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GWPhotoAlbumTool.m; sourceTree = "<group>"; };
 		BE3DBDAA1A25732A00390AB7 /* GWSingleton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GWSingleton.h; sourceTree = "<group>"; };
@@ -48,6 +53,10 @@
 		BE409EE11A26C82400ED9AC9 /* GWPhotoAlbumViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GWPhotoAlbumViewCell.h; sourceTree = "<group>"; };
 		BE409EE21A26C82400ED9AC9 /* GWPhotoAlbumViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GWPhotoAlbumViewCell.m; sourceTree = "<group>"; };
 		BE409EE41A26CA1F00ED9AC9 /* GWPhotoAlbumViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GWPhotoAlbumViewCell.xib; sourceTree = "<group>"; };
+		BE7885261A2B50C7002B742D /* GWImageClipView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GWImageClipView.h; sourceTree = "<group>"; };
+		BE7885271A2B50C7002B742D /* GWImageClipView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GWImageClipView.m; sourceTree = "<group>"; };
+		BE7885291A2B5199002B742D /* GWImageClipRectView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GWImageClipRectView.h; sourceTree = "<group>"; };
+		BE78852A1A2B5199002B742D /* GWImageClipRectView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GWImageClipRectView.m; sourceTree = "<group>"; };
 		BE90E4C91A2708F200CFD184 /* GWPhotoEditViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GWPhotoEditViewController.h; sourceTree = "<group>"; };
 		BE90E4CA1A2708F200CFD184 /* GWPhotoEditViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GWPhotoEditViewController.m; sourceTree = "<group>"; };
 		BEC83FAC1A241B8D00822088 /* CameraDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CameraDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -207,6 +216,12 @@
 				BE3DBDAF1A25B43E00390AB7 /* GWPhotoViewCell.m */,
 				BE409EE11A26C82400ED9AC9 /* GWPhotoAlbumViewCell.h */,
 				BE409EE21A26C82400ED9AC9 /* GWPhotoAlbumViewCell.m */,
+				BE7885261A2B50C7002B742D /* GWImageClipView.h */,
+				BE7885271A2B50C7002B742D /* GWImageClipView.m */,
+				BE7885291A2B5199002B742D /* GWImageClipRectView.h */,
+				BE78852A1A2B5199002B742D /* GWImageClipRectView.m */,
+				BE1EC0EC1A2C684900108FD0 /* GWCornerView.h */,
+				BE1EC0ED1A2C684900108FD0 /* GWCornerView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -250,6 +265,7 @@
 				BEC83FA81A241B8D00822088 /* Sources */,
 				BEC83FA91A241B8D00822088 /* Frameworks */,
 				BEC83FAA1A241B8D00822088 /* Resources */,
+				BEFFB5531A2811150056AEB5 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -337,6 +353,22 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		BEFFB5531A2811150056AEB5 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 12;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if [ $CONFIGURATION == Archive ]; then\necho \"Bumping build number...\"\nplist=${PROJECT_DIR}/${INFOPLIST_FILE}\n\n# increment the build number (ie 115 to 116)\nbuildnum=$(/usr/libexec/PlistBuddy -c \"Print CFBundleVersion\" \"${plist}\")\nif [[ \"${buildnum}\" == \"\" ]]; then\necho \"No build number in $plist\"\nexit 2\nfi\n\nbuildnum=$(expr $buildnum + 1)\n/usr/libexec/Plistbuddy -c \"Set CFBundleVersion $buildnum\" \"${plist}\"\necho \"Bumped build number to $buildnum\"\n\nelse\necho $CONFIGURATION \" build - Not bumping build number.\"\nfi";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		BEC83FA81A241B8D00822088 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -346,13 +378,16 @@
 				BE3DBDAD1A25AC3200390AB7 /* GWPhotoViewController.m in Sources */,
 				BEF321D41A248ABC0087F43A /* GWPhoto.m in Sources */,
 				BEF321CF1A247EF60087F43A /* GWPhotoAlbumController.m in Sources */,
+				BE7885281A2B50C7002B742D /* GWImageClipView.m in Sources */,
 				BE3DBDB01A25B43E00390AB7 /* GWPhotoViewCell.m in Sources */,
 				BE3DBDA91A25724600390AB7 /* GWPhotoAlbumTool.m in Sources */,
 				BED37D351A241D32000826D7 /* AppDelegate.m in Sources */,
 				BED37D361A241D32000826D7 /* main.m in Sources */,
 				BE90E4CB1A2708F200CFD184 /* GWPhotoEditViewController.m in Sources */,
 				BED37D341A241D32000826D7 /* ViewController.m in Sources */,
+				BE78852B1A2B5199002B742D /* GWImageClipRectView.m in Sources */,
 				BE409EE31A26C82400ED9AC9 /* GWPhotoAlbumViewCell.m in Sources */,
+				BE1EC0EE1A2C684900108FD0 /* GWCornerView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -12,7 +12,7 @@
  */
 @interface GWPhotoViewController : UIViewController
 /** 照片模型数组，装的GWPhoto对象 */
-@property (nonatomic, strong) NSArray *photos;
+@property (nonatomic, strong) NSArray        *photos;
 /** 存储选中的图片模型，装的GWPhoto对象 */
 @property (nonatomic, strong) NSMutableArray *selectedPhotos;
 @end

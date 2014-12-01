@@ -22,7 +22,7 @@ typedef void (^PhotoAlbumFailureBlock)(NSError *error);
  */
 @interface GWPhotoAlbumTool : NSObject
 
-@property (nonatomic, strong) ALAssetsLibrary *assetsLibrary;
+@property (nonatomic, strong, readonly) ALAssetsLibrary *assetsLibrary;
 
 /**
  *  创建一个相册工具类单例对象

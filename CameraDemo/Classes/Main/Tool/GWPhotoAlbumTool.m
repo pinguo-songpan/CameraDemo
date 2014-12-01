@@ -63,7 +63,10 @@ static GWPhotoAlbumTool *_instance = nil;
             success(photoAlbums);
         }
     } error:^(NSError *error) {
-        
+        if (errorBlock)
+        {
+            errorBlock(error);
+        }
     }];
 }
 

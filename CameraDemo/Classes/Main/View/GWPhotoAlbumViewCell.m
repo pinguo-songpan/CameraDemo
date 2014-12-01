@@ -34,6 +34,9 @@
 {
     // 把底部的图片向右旋转一定角度
     self.mBackgroundImageView.transform = CGAffineTransformMakeRotation(M_PI_2 * 0.1);
+    // 栅格化图层，防止旋转后有锯齿
+    self.mBackgroundImageView.layer.shouldRasterize = YES;
+    self.mBackgroundImageView.layer.rasterizationScale = 1;
     
     // 图片添加半透明遮盖
     UIView *cover = [[UIView alloc] initWithFrame:self.mImageView.bounds];
@@ -52,7 +55,7 @@
     GWPhoto *photo = [photoAlbum.photos firstObject];
     self.mBackgroundImageView.image = photo.imageSmail;
     self.mImageView.image = [[photoAlbum.photos lastObject] imageSmail];
-    self.mCount.text = [NSString stringWithFormat:@"%ld",photoAlbum.photos.count];
+    self.mCount.text = [NSString stringWithFormat:@"%lu",(unsigned long)photoAlbum.photos.count];
     self.mName.text = photoAlbum.name;
 }
 @end
