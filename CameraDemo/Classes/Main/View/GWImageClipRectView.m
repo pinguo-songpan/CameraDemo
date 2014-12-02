@@ -5,7 +5,6 @@
 //  Created by will on 14/11/30.
 //  Copyright (c) 2014年 Camera360. All rights reserved.
 //
-
 #import "GWImageClipRectView.h"
 #import "GWCornerView.h"
 
@@ -36,6 +35,7 @@
     _clipRect = clipRect;
     self.frame = clipRect;
     [self updateCornersFrame];
+    [self setNeedsDisplay];
 }
 
 // 懒加载clipRect 如果Size为（0,0）会设置一个初始值
@@ -88,9 +88,6 @@
     [self.mCorners addObject:rightBottomCorner];
     
     for (UIView *corner in self.mCorners) {
-        corner.bounds = CGRectMake(0, 0, 20, 20);
-        corner.layer.cornerRadius = 10.0f;
-        corner.backgroundColor = [UIColor greenColor];
         [self addSubview:corner];
     }
 }
@@ -117,7 +114,6 @@
 - (void)drawRect:(CGRect)rect
 {
     [super drawRect:rect];
-    NSLog(@"--drawRect-------%@",NSStringFromCGRect(self.clipRect));
     CGContextRef ctx = UIGraphicsGetCurrentContext();
     
     CGContextSetRGBFillColor(ctx,   0.0, 0.0, 0.0, 0.7);
@@ -133,20 +129,19 @@
     CGFloat width = self.bounds.size.width;
     CGFloat height = self.bounds.size.height;
     
-    CGRect clipsRectS[] =
-    {
-        CGRectMake(0, 0, width, self.clipRect.origin.y),
-        CGRectMake(0, self.clipRect.origin.y, self.clipRect.origin.x, self.clipRect.size.height),
-        CGRectMake(0, self.clipRect.origin.y + self.clipRect.size.height, width, height - (self.clipRect.origin.y + self.clipRect.size.height)),
-        CGRectMake(self.clipRect.origin.x + self.clipRect.size.width, self.clipRect.origin.y, width -(self.clipRect.origin.x + self.clipRect.size.width), self.clipRect.size.height),
-    };
+//    CGRect clipsRectS[] =
+//    {
+//        CGRectMake(0, 0, width, self.clipRect.origin.y),
+//        CGRectMake(0, self.clipRect.origin.y, self.clipRect.origin.x, self.clipRect.size.height),
+//        CGRectMake(0, self.clipRect.origin.y + self.clipRect.size.height, width, height - (self.clipRect.origin.y + self.clipRect.size.height)),
+//        CGRectMake(self.clipRect.origin.x + self.clipRect.size.width, self.clipRect.origin.y, width -(self.clipRect.origin.x + self.clipRect.size.width), self.clipRect.size.height),
+//    };
 
-    CGContextClipToRects(ctx, clipsRectS, sizeof(clipsRectS) / sizeof(clipsRectS[0]));
+//    CGContextClipToRects(ctx, clipsRectS, sizeof(clipsRectS) / sizeof(clipsRectS[0]));
     
     CGRect strokeRect = CGRectMake(0, 0, self.clipRect.size.width, self.clipRect.size.height);
-    CGContextFillRect(ctx, self.bounds);
+//    CGContextFillRect(ctx, rect);
     CGContextStrokeRect(ctx, strokeRect);
     UIGraphicsEndImageContext();
 }
-
 @end

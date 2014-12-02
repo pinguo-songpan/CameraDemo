@@ -129,6 +129,10 @@
         self.mImageClipView.hidden = YES;
         self.mImageView.hidden = NO;
     }];
+    
+    UIImage *image = [self.mImageClipView clipImage];
+    self.mImageView.image = image;
+    self.mOldImage = image;
 }
 
 - (void)setPhoto:(GWPhoto *)photo
@@ -147,4 +151,6 @@
         self.navigationController.interactivePopGestureRecognizer.enabled = NO;
     }
 }
+
+
 @end

@@ -123,4 +123,11 @@
     }
 }
 
+- (void)dealloc
+{
+    for (GWPhoto *p in self.selectedPhotos) {
+        p.isSelected = NO;
+    }
+}
+
 @end

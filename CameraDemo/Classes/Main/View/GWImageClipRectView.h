@@ -7,7 +7,20 @@
 //
 
 #import <UIKit/UIKit.h>
-#define kDefaultClipRect CGRectMake(50, 100, 100, 100)
+#define kDefaultClipRect CGRectMake(0, 0, 100, 100)
+
+/**
+ *  图像裁剪视图，用于显示要被裁剪的图片
+ */
+typedef enum : NSUInteger {
+    CornerTypeMoveCenter  = 0,
+    CornerTypeLeftTop     = 1,
+    CornerTypeRightTop    = 2,
+    CornerTypeLeftBottom  = 3,
+    CornerTypeRightBottom = 4,
+    CornerTypeNoPoint     = 5
+} CornerType;
+
 /**
  *  图像裁剪框，用于显示裁剪图片范围
  */
@@ -16,18 +29,20 @@
     CGRect _clipRect;  // 截取范围
 }
 
+@property (nonatomic, assign) CornerType cornerType;
 /**
  *  可控手柄的颜色
  */
 @property (nonatomic, strong) UIColor *cornerColor;
 
 /**
- *  设置截取范围
+ *  是否可以移动
  */
-- (void)setClipRect:(CGRect)clipRect;
+@property (nonatomic, assign) BOOL isMove;
 
 /**
- *  获取截取范围
+ *  截取范围
  */
-- (CGRect)clipRect;
+@property (nonatomic, assign) CGRect clipRect;
+
 @end
