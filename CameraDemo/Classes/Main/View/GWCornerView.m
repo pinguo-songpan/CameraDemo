@@ -15,8 +15,8 @@
     self = [super init];
     if (self)
     {
-        self.bounds = CGRectMake(0, 0, 30, 30);
-        self.layer.cornerRadius = 15.0f;
+        self.bounds = CGRectMake(0, 0, 20, 20);
+        self.layer.cornerRadius = 10.0f;
         self.backgroundColor = [UIColor whiteColor];
         self.layer.shadowColor = [UIColor blackColor].CGColor;
         self.layer.shadowOffset = CGSizeMake(1, 1);

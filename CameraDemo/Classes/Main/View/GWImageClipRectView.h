@@ -9,9 +9,6 @@
 #import <UIKit/UIKit.h>
 #define kDefaultClipRect CGRectMake(0, 0, 100, 100)
 
-/**
- *  图像裁剪视图，用于显示要被裁剪的图片
- */
 typedef enum : NSUInteger {
     CornerTypeMoveCenter  = 0,
     CornerTypeLeftTop     = 1,

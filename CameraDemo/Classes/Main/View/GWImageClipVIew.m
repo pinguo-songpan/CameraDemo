@@ -5,7 +5,7 @@
 //  Created by will on 14/11/30.
 //  Copyright (c) 2014年 Camera360. All rights reserved.
 //
-#define kCornerWidth 30
+#define kCornerWidth 20
 #define IMAGE_BOUNDRY_SPACE 0
 
 #import "GWImageClipView.h"
@@ -18,7 +18,7 @@
 @property (nonatomic, assign) CGPoint mClipRectViewCenterPoint; // 开始移动时clipRectView的center
 @property (nonatomic, assign) CGFloat mScalingFactor; // 缩放比例
 @property (nonatomic, assign) CGRect mBeginRect;
-@property (nonatomic, assign) CGRect mMacRect;
+//@property (nonatomic, assign) CGSize mLastSize;  // 拉动放大超出边界时，记录下最后的大小
 @end
 
 @implementation GWImageClipView
@@ -78,10 +78,10 @@
     self.mScalingFactor = widthRatio > heightRatio ? widthRatio : heightRatio;
     
     self.mImageView.bounds = CGRectMake(0, 0, imgWidth / self.mScalingFactor, imgHeight/self.mScalingFactor);
-    self.mImageView.center = CGPointMake(self.bounds.size.width/2, self.bounds.size.height/2);
+    self.mImageView.center = CGPointMake(self.bounds.size.width / 2, self.bounds.size.height / 2);
     
     // 裁剪框默认截取范围
-    self.mClipRectView.clipRect = self.mImageView.bounds;
+//    self.mClipRectView.clipRect = self.mImageView.bounds;
     self.clipRect = self.mImageView.bounds;
 }
 
@@ -95,9 +95,8 @@
     self.mBegainPoint = begainPoint;
     self.mBeginRect = self.mClipRectView.frame; // 记录下开始时clipRectView的位置
     
-    id view = [self hitTest:begainPoint withEvent:event];
-    NSLog(@"%@",[view class]);
-    if ([view isKindOfClass:[GWImageClipRectView class]] || [view isKindOfClass:[GWCornerView class]])
+    
+    if (CGRectContainsPoint(self.mClipRectView.frame, begainPoint))
     {
         self.mClipRectView.isMove = YES;
         NSLog(@"可以移动");
@@ -172,20 +171,20 @@
     
     // 移动裁剪框
     self.mClipRectView.center = newCenter;
-    
     self.clipRect = self.mClipRectView.frame;
+    
     switch (self.mClipRectView.cornerType) {
         case CornerTypeLeftTop:
-            self.mClipRectView.clipRect = CGRectMake(self.mBeginRect.origin.x + pointOffset.x, self.mBeginRect.origin.y + pointOffset.y, self.mBeginRect.size.width - pointOffset.x, self.mBeginRect.size.height - pointOffset.y);
+            self.clipRect = CGRectMake(self.mBeginRect.origin.x + pointOffset.x, self.mBeginRect.origin.y + pointOffset.y, self.mBeginRect.size.width - pointOffset.x, self.mBeginRect.size.height - pointOffset.y);
             break;
         case CornerTypeRightTop:
-            self.mClipRectView.clipRect = CGRectMake(self.mBeginRect.origin.x, self.mBeginRect.origin.y + pointOffset.y, self.mBeginRect.size.width + pointOffset.x, self.mBeginRect.size.height - pointOffset.y);
+            self.clipRect = CGRectMake(self.mBeginRect.origin.x, self.mBeginRect.origin.y + pointOffset.y, self.mBeginRect.size.width + pointOffset.x, self.mBeginRect.size.height - pointOffset.y);
             break;
         case CornerTypeLeftBottom:
-            self.mClipRectView.clipRect = CGRectMake(self.mBeginRect.origin.x + pointOffset.x, self.mBeginRect.origin.y, self.mBeginRect.size.width - pointOffset.x, self.mBeginRect.size.height + pointOffset.y);
+            self.clipRect = CGRectMake(self.mBeginRect.origin.x + pointOffset.x, self.mBeginRect.origin.y, self.mBeginRect.size.width - pointOffset.x, self.mBeginRect.size.height + pointOffset.y);
             break;
         case CornerTypeRightBottom:
-            self.mClipRectView.clipRect = CGRectMake(self.mBeginRect.origin.x, self.mBeginRect.origin.y, self.mBeginRect.size.width + pointOffset.x, self.mBeginRect.size.height + pointOffset.y);
+            self.clipRect = CGRectMake(self.mBeginRect.origin.x, self.mBeginRect.origin.y, self.mBeginRect.size.width + pointOffset.x, self.mBeginRect.size.height + pointOffset.y);
             break;
         default:
             self.mClipRectView.center = newCenter;
@@ -203,6 +202,53 @@
 
 - (void)setClipRect:(CGRect)clipRect
 {
+ 
+
+    // 裁剪框最大、最小范围
+    CGSize maxSize = self.mImageView.bounds.size;
+    NSLog(@"clipRect````````%@",NSStringFromCGRect(clipRect));
+//    NSLog(@"mImageViewFrame````````%@",NSStringFromCGRect(self.mImageView.frame));
+//     NSLog(@"mImageViewBounds````````%@",NSStringFromCGRect(self.mImageView.bounds));
+    CGSize miniSize = CGSizeMake(50, 50);
+    // 限制裁剪框的最小范围和最大范围
+    if (clipRect.size.width <= miniSize.width)
+    {
+        clipRect.size.width = miniSize.width;
+        NSLog(@"最小宽度1");
+    }
+    if (clipRect.size.height <= miniSize.height)
+    {
+        clipRect.size.height = miniSize.height;
+        NSLog(@"最小高度2");
+    }
+    if (clipRect.size.width >= maxSize.width)
+    {
+        clipRect.size.width = maxSize.width;
+        NSLog(@"最大宽度3");
+    }
+    if (clipRect.size.height >= maxSize.height)
+    {
+        clipRect.size.height = maxSize.height;
+        NSLog(@"最大高度4");
+    }
+    
+    // 限制裁剪框不可以拖出被裁剪的视图
+    if (clipRect.origin.x <= 0)
+    {
+        clipRect.origin.x = 0;
+    }
+    if (clipRect.origin.x >= self.mImageView.bounds.size.width - clipRect.size.width) {
+        clipRect.origin.x = self.mImageView.bounds.size.width - clipRect.size.width;
+    }
+    if (clipRect.origin.y <= 0)
+    {
+        clipRect.origin.y = 0;
+    }
+    if (clipRect.origin.y >= self.mImageView.bounds.size.height - clipRect.size.height)
+    {
+        clipRect.origin.y = self.mImageView.bounds.size.height - clipRect.size.height;
+    }
+    
     _clipRect = clipRect;
     _mClipRectView.clipRect = clipRect;
 }
@@ -241,7 +287,4 @@
     }
     return _mScalingFactor;
 }
-
-
-
 @end

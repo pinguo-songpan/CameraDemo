@@ -7,7 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-
+/**
+ *  图像裁剪视图，用于显示要被裁剪的图片
+ */
 @interface GWImageClipView : UIView
 @property (nonatomic, strong) UIImage *image;
 @property (nonatomic, assign) CGRect clipRect;

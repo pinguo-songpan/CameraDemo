@@ -27,23 +27,8 @@
     {
         self.title = @"图片编辑";
         self.view.backgroundColor = [UIColor whiteColor];
-        // 1.工具栏
+        
         [self buildUI];
-        
-        // 2.显示的图片
-        UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(10, 64+10, iPhoneW-20, iPhoneH-64-44-20)];
-        imageView.contentMode = UIViewContentModeScaleAspectFit;
-        imageView.backgroundColor = [UIColor redColor];
-        [self.view addSubview:imageView];
-        self.mImageView = imageView;
-        
-        // 3.可被裁剪的图片
-        GWImageClipView *imageClipView = [[GWImageClipView alloc] initWithFrame:imageView.frame];
-        imageClipView.hidden = YES;
-        [self.view addSubview:imageClipView];
-        self.mImageClipView = imageClipView;
-       
-    
     }
     return self;
 }
@@ -55,9 +40,21 @@
 
 - (void)buildUI
 {
+    // 显示的图片
+    UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(10, 64+10, iPhoneW-20, iPhoneH-64-44-20)];
+    imageView.contentMode = UIViewContentModeScaleAspectFit;
+    imageView.backgroundColor = [UIColor redColor];
+    [self.view addSubview:imageView];
+    self.mImageView = imageView;
+    
+    // 可被裁剪的图片
+    GWImageClipView *imageClipView = [[GWImageClipView alloc] initWithFrame:imageView.frame];
+    imageClipView.hidden = YES;
+    [self.view addSubview:imageClipView];
+    self.mImageClipView = imageClipView;
     // 添加工具栏
     UIToolbar *toolBar = [[UIToolbar alloc] init];
-    toolBar.frame = CGRectMake(0, iPhoneH - 44, iPhoneW, 44);
+    toolBar.frame = CGRectMake(0, iPhoneH-44, iPhoneW, 44);
     
     UIBarButtonItem *circleClip = [[UIBarButtonItem alloc] initWithTitle:@"圆形裁剪" style:UIBarButtonItemStylePlain target:self action:@selector(circleClipPressed:)];
     UIBarButtonItem *rectClip = [[UIBarButtonItem alloc] initWithTitle:@"矩形裁剪" style:UIBarButtonItemStylePlain target:self action:@selector(rectClipPressed:)];
@@ -96,10 +93,10 @@
         [[UIApplication sharedApplication] setStatusBarHidden:YES];
         self.navigationController.navigationBar.transform = CGAffineTransformMakeTranslation(0, -navBarHeight - 20);
         self.mToolBar.transform = CGAffineTransformMakeTranslation(0, toolBarHeight);
-        self.mClipDoneBtn.transform = CGAffineTransformMakeTranslation(0, -40);
+        self.mClipDoneBtn.transform = CGAffineTransformMakeTranslation(0, -44);
         self.mImageView.hidden = YES;
         self.mImageClipView.hidden = NO;
-        self.mImageClipView.transform = CGAffineTransformMakeTranslation(0, - 60);
+        self.mImageClipView.transform = CGAffineTransformMakeTranslation(0, - 64);
         
     } completion:^(BOOL finished) {
        

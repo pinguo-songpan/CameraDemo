@@ -23,7 +23,7 @@
     self = [super init];
     if (self)
     {
-        self.backgroundColor = [UIColor clearColor];
+        self.backgroundColor = [[UIColor yellowColor] colorWithAlphaComponent:0.5];
         [self buildUI];
         
     }
@@ -99,7 +99,9 @@
     [self updateCornersFrame];
 }
 
-#pragma mark 更新控制柄的Frame
+/**
+ *  更新控制柄的Frame
+ */
 - (void)updateCornersFrame
 {
     CGFloat width = CGRectGetWidth(self.clipRect);
@@ -121,10 +123,10 @@
     [[UIColor whiteColor] setStroke];
     CGFloat lengths[2];
     lengths[0] = 0.0;
-    lengths[1] = 10.0;
-    CGContextSetLineCap(ctx, kCGLineCapRound);
+    lengths[1] = 2.0;
+//    CGContextSetLineCap(ctx, kCGLineCapRound);
     CGContextSetLineWidth(ctx, 3.0);
-    CGContextSetLineDash(ctx, 0.0f, lengths, 2);
+//    CGContextSetLineDash(ctx, 0.0f, lengths, 2);
     
     CGFloat width = self.bounds.size.width;
     CGFloat height = self.bounds.size.height;
