@@ -14,6 +14,8 @@ typedef void (^PhotoAlbumsFailureBlock)(NSError *error);
 typedef void (^PhotoAlbumSuccessBlock)(GWPhotoAlbum *photoAlbum);
 typedef void (^PhotoAlbumFailureBlock)(NSError *error);
 
+typedef void(^SaveImageFailureBlock)(NSError* error);
+
 #import <Foundation/Foundation.h>
 #import <AssetsLibrary/AssetsLibrary.h>
 
@@ -37,4 +39,22 @@ typedef void (^PhotoAlbumFailureBlock)(NSError *error);
  *  @param errorBlock 失败的Block
  */
 + (void)fetchPhotoAlbumsWithType:(ALAssetsGroupType)groupType succes:(PhotoAlbumsSuccessBlock)success error:(PhotoAlbumsFailureBlock)errorBlock;
+/**
+ *  保存图片到指定的相册
+ *
+ *  @param image           需要保存的图片
+ *  @param albumName       相册名称
+ *  @param saveFailureBlock 保存失败的Block
+ */
++ (void)saveImage:(UIImage*)image toAlbum:(NSString*)albumName failure:(SaveImageFailureBlock)failureBlock;
+
+/**
+ *  保存指定的AssertURL到指定相册
+ *
+ *  @param assetURL     assetURL
+ *  @param albumName    相册名称
+ *  @param failureBlock 保存失败的Block
+ */
++ (void)addAssetURL:(NSURL*)assetURL toAlbum:(NSString*)albumName failure:(SaveImageFailureBlock)failureBlock;
+
 @end

@@ -45,6 +45,7 @@
 
 - (void)viewDidLoad
 {
+    [super viewDidLoad];
     UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc] init];
     layout.scrollDirection = UICollectionViewScrollDirectionVertical;
     layout.minimumInteritemSpacing = 2;

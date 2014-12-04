@@ -107,4 +107,60 @@ static GWPhotoAlbumTool *_instance = nil;
     }];
 }
 
++ (void)saveImage:(UIImage*)image toAlbum:(NSString*)albumName failure:(SaveImageFailureBlock)failureBlock
+{
+     GWPhotoAlbumTool *photoAlbumTool = [GWPhotoAlbumTool sharePhotoAlbumTool];
+    [photoAlbumTool.assetsLibrary writeImageToSavedPhotosAlbum:image.CGImage orientation:(ALAssetOrientation)image.imageOrientation completionBlock:^(NSURL *assetURL, NSError *error) {
+        if (error)
+        {
+            failureBlock(error);
+            return;
+        }
+        [GWPhotoAlbumTool addAssetURL:assetURL toAlbum:albumName failure:^(NSError *error) {
+            
+        }];
+    }];
+}
+
++ (void)addAssetURL:(NSURL*)assetURL toAlbum:(NSString*)albumName failure:(SaveImageFailureBlock)failureBlock
+{
+    GWPhotoAlbumTool *photoAlbumTool = [GWPhotoAlbumTool sharePhotoAlbumTool];
+    
+     __block BOOL albumWasFound = NO;
+    
+    [photoAlbumTool.assetsLibrary enumerateGroupsWithTypes:ALAssetsGroupAlbum usingBlock:^(ALAssetsGroup *group, BOOL *stop) {
+        if ([albumName compare:[group valueForProperty:ALAssetsGroupPropertyName]] == NSOrderedSame) {
+            // 找到相同的相册
+            albumWasFound = YES;
+            [photoAlbumTool.assetsLibrary assetForURL:assetURL resultBlock:^(ALAsset *asset) {
+                [group addAsset:asset];
+                
+                failureBlock(nil);
+            } failureBlock:^(NSError *error) {
+                return ;
+            }];
+        }
+        
+        if ((group == nil) && (albumWasFound == NO)) {
+            __weak ALAssetsLibrary *weakSelf = photoAlbumTool.assetsLibrary;
+            [photoAlbumTool.assetsLibrary addAssetsGroupAlbumWithName:albumName resultBlock:^(ALAssetsGroup *group) {
+                [weakSelf assetForURL:assetURL resultBlock:^(ALAsset *asset) {
+                    // 增加照片到新建相册
+                    [group addAsset:asset];
+                    
+                    failureBlock(nil);
+                } failureBlock:^(NSError *error) {
+                    
+                }];
+            } failureBlock:^(NSError *error) {
+                
+            }];
+            return ;
+        }
+        
+    } failureBlock:^(NSError *error) {
+
+    }];
+}
+
 @end

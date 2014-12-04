@@ -81,7 +81,6 @@
     self.mImageView.center = CGPointMake(self.bounds.size.width / 2, self.bounds.size.height / 2);
     
     // 裁剪框默认截取范围
-//    self.mClipRectView.clipRect = self.mImageView.bounds;
     self.clipRect = self.mImageView.bounds;
 }
 
@@ -202,11 +201,9 @@
 
 - (void)setClipRect:(CGRect)clipRect
 {
- 
-
     // 裁剪框最大、最小范围
     CGSize maxSize = self.mImageView.bounds.size;
-    NSLog(@"clipRect````````%@",NSStringFromCGRect(clipRect));
+//    NSLog(@"clipRect````````%@",NSStringFromCGRect(clipRect));
 //    NSLog(@"mImageViewFrame````````%@",NSStringFromCGRect(self.mImageView.frame));
 //     NSLog(@"mImageViewBounds````````%@",NSStringFromCGRect(self.mImageView.bounds));
     CGSize miniSize = CGSizeMake(50, 50);
@@ -255,12 +252,8 @@
 
 - (UIImage *)clipImage
 {
-    CGRect imageRect = CGRectMake(_clipRect.origin.x * _image.scale * self.mScalingFactor,
-                                  _clipRect.origin.y * _image.scale * self.mScalingFactor,
-                                  _clipRect.size.width * _image.scale * self.mScalingFactor,
-                                  _clipRect.size.height * _image.scale * self.mScalingFactor);
+    CGRect imageRect = [self trueClipRect];
 
-    
     CGImageRef imageRef = CGImageCreateWithImageInRect([_image CGImage], imageRect);
     UIImage *result = [UIImage imageWithCGImage:imageRef
                                           scale:_image.scale
@@ -278,6 +271,16 @@
         self.clipRect = kDefaultClipRect;
     }
     return _clipRect;
+}
+
+#pragma mark - 真实的裁减范围
+- (CGRect)trueClipRect
+{
+    CGRect trueClipRect = CGRectMake(_clipRect.origin.x * _image.scale * self.mScalingFactor,
+                                  _clipRect.origin.y * _image.scale * self.mScalingFactor,
+                                  _clipRect.size.width * _image.scale * self.mScalingFactor,
+                                  _clipRect.size.height * _image.scale * self.mScalingFactor);
+    return trueClipRect;
 }
 
 - (CGFloat)mScalingFactor
