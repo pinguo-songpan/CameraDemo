@@ -52,10 +52,9 @@
 {
     _photoAlbum = photoAlbum;
     
-    GWPhoto *photo = [photoAlbum.photos firstObject];
-    self.mBackgroundImageView.image = photo.imageSmail;
-    self.mImageView.image = [[photoAlbum.photos lastObject] imageSmail];
-    self.mCount.text = [NSString stringWithFormat:@"%lu",(unsigned long)photoAlbum.photos.count];
+    self.mBackgroundImageView.image = photoAlbum.backImage;
+    self.mImageView.image = photoAlbum.foreImage;
+    self.mCount.text = [NSString stringWithFormat:@"%ld",photoAlbum.count];
     self.mName.text = photoAlbum.name;
 }
 @end

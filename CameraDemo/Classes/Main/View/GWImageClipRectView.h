@@ -26,14 +26,18 @@ typedef enum : NSUInteger {
     CGRect _clipRect;  // 截取范围
 }
 
+/**
+ *  控制柄类型
+ */
 @property (nonatomic, assign) CornerType cornerType;
+
 /**
  *  可控手柄的颜色
  */
 @property (nonatomic, strong) UIColor *cornerColor;
 
 /**
- *  是否可以移动
+ *  裁剪框是否可以移动
  */
 @property (nonatomic, assign) BOOL isMove;
 
@@ -41,5 +45,25 @@ typedef enum : NSUInteger {
  *  截取范围
  */
 @property (nonatomic, assign) CGRect clipRect;
+
+/**
+ *  左上角控制柄范围
+ */
+@property (nonatomic, assign) CGRect cornerLeftTopRect;
+
+/**
+ *  右上角控制柄范围
+ */
+@property (nonatomic, assign) CGRect cornerRightTopRect;
+
+/**
+ *  左下角控制柄范围
+ */
+@property (nonatomic, assign) CGRect cornerLeftBottomRect;
+
+/**
+ *  右上角控制柄范围
+ */
+@property (nonatomic, assign) CGRect cornerRightBottomRect;
 
 @end
