@@ -28,7 +28,7 @@
     if (self)
     {
         self.title = @"照片";
-        UIBarButtonItem *rightItem = [[UIBarButtonItem alloc] initWithTitle:@"编辑" style:UIBarButtonItemStylePlain target:self action:@selector(rightItemClick:)];
+        UIBarButtonItem *rightItem = [[UIBarButtonItem alloc] initWithTitle:@"选择" style:UIBarButtonItemStylePlain target:self action:@selector(rightItemClick:)];
         rightItem.enabled = NO;
         [self.navigationItem setRightBarButtonItem:rightItem];
         self.mRightItem = rightItem;

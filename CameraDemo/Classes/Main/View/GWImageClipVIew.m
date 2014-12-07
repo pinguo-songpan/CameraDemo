@@ -5,7 +5,7 @@
 //  Created by will on 14/11/30.
 //  Copyright (c) 2014年 Camera360. All rights reserved.
 //
-#define kImageMargin 0
+#define kImageMargin 10
 #define kClipRectMiniWith 50
 
 #import "GWImageClipView.h"
@@ -44,9 +44,7 @@
 }
 
 - (void)buildUI:(CGRect)rect
-{
-    self.backgroundColor = [UIColor darkGrayColor];
-    
+{    
     // 1.添加需要被裁剪的图片
     UIImageView *imageView = [[UIImageView alloc] init];
     imageView.userInteractionEnabled = YES;
@@ -226,9 +224,7 @@
 {
     // 裁剪框最大、最小范围
     CGSize maxSize = self.mImageView.bounds.size;
-//    NSLog(@"clipRect````````%@",NSStringFromCGRect(clipRect));
-//    NSLog(@"mImageViewFrame````````%@",NSStringFromCGRect(self.mImageView.frame));
-//     NSLog(@"mImageViewBounds````````%@",NSStringFromCGRect(self.mImageView.bounds));
+
     CGSize miniSize = CGSizeMake(kClipRectMiniWith, kClipRectMiniWith);
     // 限制裁剪框的最小范围和最大范围
     if (clipRect.size.width <= miniSize.width)
@@ -257,7 +253,8 @@
     {
         clipRect.origin.x = 0;
     }
-    if (clipRect.origin.x >= self.mImageView.bounds.size.width - clipRect.size.width) {
+    if (clipRect.origin.x >= self.mImageView.bounds.size.width - clipRect.size.width)
+    {
         clipRect.origin.x = self.mImageView.bounds.size.width - clipRect.size.width;
     }
     if (clipRect.origin.y <= 0)
@@ -276,14 +273,13 @@
 - (UIImage *)clipImage
 {
     CGRect imageRect = [self trueClipRect];
-
-    NSLog(@"clipImage-------%d",(int)_image.imageOrientation);
+    
     CGImageRef imageRef = CGImageCreateWithImageInRect([_image CGImage], imageRect);
     UIImage *newImage = [UIImage imageWithCGImage:imageRef
                                           scale:1
                                     orientation:_image.imageOrientation];
     CGImageRelease(imageRef);
-    NSLog(@"clipImage2-------%d",(int)newImage.imageOrientation);
+
     return newImage;
 }
 

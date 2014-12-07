@@ -9,58 +9,59 @@
             <objects>
                 <viewController id="vXZ-lx-hvc" customClass="ViewController" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="btR-9U-zDK"/>
-                        <viewControllerLayoutGuide type="bottom" id="3Dk-5N-BZH"/>
+                        <viewControllerLayoutGuide type="top" id="Er0-2k-jFt"/>
+                        <viewControllerLayoutGuide type="bottom" id="Udh-Lc-eLv"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0PZ-m4-1Y2">
-                                <rect key="frame" x="130" y="145" width="60" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="60" id="0ZL-9C-cet"/>
-                                    <constraint firstAttribute="height" constant="30" id="KYn-ef-7gC"/>
-                                </constraints>
-                                <state key="normal" title="选择图片">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wz9-PX-lcj">
+                                <rect key="frame" x="133" y="149" width="54" height="54"/>
+                                <state key="normal" backgroundImage="photoAlbum_iOS7">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="openAlbum:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="XM6-Xx-EhU"/>
+                                    <action selector="openAlbum:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="4gh-jj-Idf"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7iv-0I-Jin">
-                                <rect key="frame" x="130" y="415" width="60" height="30"/>
-                                <state key="normal" title="打开相机">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="相册" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nkt-0a-Vdq">
+                                <rect key="frame" x="143" y="211" width="34" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wn9-Ka-81U">
+                                <rect key="frame" x="133" y="311" width="54" height="54"/>
+                                <state key="normal" backgroundImage="camera_iOS7">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="openCamera:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="v1t-ZT-DIb"/>
+                                    <action selector="openCamera:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="Mpu-05-YII"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rSC-UL-o0N">
-                                <rect key="frame" x="130" y="260" width="60" height="30"/>
-                                <state key="normal" title="图片裁剪">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="clipImage:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="S4c-1I-3Uc"/>
-                                </connections>
-                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="相机" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ypZ-Eg-GmH">
+                                <rect key="frame" x="143" y="373" width="34" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="rSC-UL-o0N" firstAttribute="top" secondItem="0PZ-m4-1Y2" secondAttribute="bottom" constant="85" id="7fs-zP-dq2"/>
-                            <constraint firstItem="0PZ-m4-1Y2" firstAttribute="leading" secondItem="rSC-UL-o0N" secondAttribute="leading" id="E65-8Z-yBh"/>
-                            <constraint firstItem="7iv-0I-Jin" firstAttribute="height" secondItem="rSC-UL-o0N" secondAttribute="height" id="Oy2-vl-Hr1"/>
-                            <constraint firstAttribute="centerX" secondItem="0PZ-m4-1Y2" secondAttribute="centerX" id="Q9C-rr-fbV"/>
-                            <constraint firstItem="0PZ-m4-1Y2" firstAttribute="top" secondItem="btR-9U-zDK" secondAttribute="bottom" constant="81" id="Ubt-kG-ze7"/>
-                            <constraint firstItem="7iv-0I-Jin" firstAttribute="top" secondItem="rSC-UL-o0N" secondAttribute="bottom" constant="125" id="bfx-A1-7rQ"/>
-                            <constraint firstItem="rSC-UL-o0N" firstAttribute="height" secondItem="0PZ-m4-1Y2" secondAttribute="height" id="tAd-29-L78"/>
-                            <constraint firstItem="0PZ-m4-1Y2" firstAttribute="leading" secondItem="7iv-0I-Jin" secondAttribute="leading" id="vrb-DH-eYE"/>
+                            <constraint firstAttribute="centerX" secondItem="wz9-PX-lcj" secondAttribute="centerX" id="3Ow-Rn-Dvo"/>
+                            <constraint firstItem="ypZ-Eg-GmH" firstAttribute="top" secondItem="wn9-Ka-81U" secondAttribute="bottom" constant="8" id="88o-MZ-eng"/>
+                            <constraint firstItem="nkt-0a-Vdq" firstAttribute="centerX" secondItem="wz9-PX-lcj" secondAttribute="centerX" id="XTQ-x4-wgQ"/>
+                            <constraint firstAttribute="centerX" secondItem="ypZ-Eg-GmH" secondAttribute="centerX" id="hy7-tn-HyP"/>
+                            <constraint firstAttribute="centerX" secondItem="wn9-Ka-81U" secondAttribute="centerX" id="mdG-cK-RTd"/>
+                            <constraint firstItem="wn9-Ka-81U" firstAttribute="top" secondItem="nkt-0a-Vdq" secondAttribute="bottom" constant="80" id="nIq-66-on2"/>
+                            <constraint firstItem="wz9-PX-lcj" firstAttribute="top" secondItem="Er0-2k-jFt" secondAttribute="bottom" constant="85" id="nJy-lj-Mvl"/>
+                            <constraint firstItem="nkt-0a-Vdq" firstAttribute="top" secondItem="wz9-PX-lcj" secondAttribute="bottom" constant="8" id="rQk-mk-3az"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="Euf-kw-i8t"/>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" id="gAZ-Fa-VhX"/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
@@ -83,6 +84,10 @@
             <point key="canvasLocation" x="-130" y="253"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="camera_iOS7" width="54" height="54"/>
+        <image name="photoAlbum_iOS7" width="54" height="54"/>
+    </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

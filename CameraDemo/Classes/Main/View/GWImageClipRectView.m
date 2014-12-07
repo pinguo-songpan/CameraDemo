@@ -25,7 +25,6 @@
     self = [super init];
     if (self)
     {
-//        self.backgroundColor = [[UIColor yellowColor] colorWithAlphaComponent:0.5];
         self.backgroundColor = [UIColor clearColor];
         [self buildUI];
         
@@ -61,15 +60,12 @@
 
 - (NSMutableArray *)mCorners
 {
-    
     if (_mCorners == nil) {
         _mCorners = [NSMutableArray array];
     }
     
     return _mCorners;
 }
-
-
 
 - (void)buildUI
 {
