@@ -7,23 +7,29 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <AssetsLibrary/AssetsLibrary.h>
+@class ALAsset;
+
 /**
  *  单张相片模型
  */
 @interface GWPhoto : NSObject
 
+/**
+ *  是否被选中
+ */
 @property (nonatomic, assign) BOOL isSelected;
 
 /**
  *  小图
  */
-@property (nonatomic, strong) UIImage *imageSmail;
+@property (nonatomic, copy) UIImage *imageSmail;
 
 /**
  *  原图
  */
-@property (nonatomic, strong) UIImage *imageSource;
+@property (nonatomic, copy) UIImage *imageSource;
+
+@property (nonatomic, strong) ALAsset *asset;
 
 /**
  *  用ALAsset初始化模型

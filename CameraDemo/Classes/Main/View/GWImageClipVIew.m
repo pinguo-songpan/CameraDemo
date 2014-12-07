@@ -5,8 +5,8 @@
 //  Created by will on 14/11/30.
 //  Copyright (c) 2014年 Camera360. All rights reserved.
 //
-#define kCornerWidth 20
-#define IMAGE_BOUNDRY_SPACE 0
+#define kImageMargin 0
+#define kClipRectMiniWith 50
 
 #import "GWImageClipView.h"
 #import "GWImageClipRectView.h"
@@ -48,7 +48,7 @@
     self.backgroundColor = [UIColor darkGrayColor];
     
     // 1.添加需要被裁剪的图片
-    UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, rect.size.width, rect.size.height)];
+    UIImageView *imageView = [[UIImageView alloc] init];
     imageView.userInteractionEnabled = YES;
     [self addSubview:imageView];
     self.mImageView = imageView;
@@ -66,12 +66,12 @@
     [self reLayoutView];
     _mImageView.image = image;
 }
-- (void) reLayoutView
+- (void)reLayoutView
 {
     float imgWidth = _image.size.width;
     float imgHeight = _image.size.height;
-    float viewWidth = self.bounds.size.width - 2 * IMAGE_BOUNDRY_SPACE;
-    float viewHeight = self.bounds.size.height - 2 * IMAGE_BOUNDRY_SPACE;
+    float viewWidth = self.bounds.size.width - 2 * kImageMargin;
+    float viewHeight = self.bounds.size.height - 2 * kImageMargin;
     
     float widthRatio = imgWidth / viewWidth;
     float heightRatio = imgHeight / viewHeight;
@@ -102,40 +102,31 @@
     }
     
     // 判断用户点击拖动裁剪框的哪个角落
-    CGRect cornerLeftTopRect = CGRectMake(self.clipRect.origin.x - kCornerWidth / 2, self.clipRect.origin.y - kCornerWidth / 2, kCornerWidth, kCornerWidth);
-
-    CGRect cornerRightTopRect = CGRectMake(CGRectGetMaxX(self.clipRect) - kCornerWidth / 2, self.clipRect.origin.y - kCornerWidth / 2, kCornerWidth, kCornerWidth);
-    
-    CGRect cornerLeftBottomRect = CGRectMake(self.clipRect.origin.x - kCornerWidth / 2, CGRectGetMaxY(self.clipRect) - kCornerWidth / 2, kCornerWidth, kCornerWidth);
-    
-    CGRect cornerRightBottomRect = CGRectMake(CGRectGetMaxX(self.clipRect) - kCornerWidth / 2, CGRectGetMaxY(self.clipRect) - kCornerWidth / 2, kCornerWidth, kCornerWidth);
-    
-    if (CGRectContainsPoint(cornerLeftTopRect, begainPoint))
+    if (CGRectContainsPoint(self.mClipRectView.cornerLeftTopRect, begainPoint))
     {
         self.mClipRectView.cornerType = CornerTypeLeftTop;
         NSLog(@"点击了左上角");
         self.mClipRectView.isMove = YES;
     }
-    else if (CGRectContainsPoint(cornerRightTopRect, begainPoint))
+    else if (CGRectContainsPoint(self.mClipRectView.cornerRightTopRect, begainPoint))
     {
         self.mClipRectView.cornerType = CornerTypeRightTop;
         NSLog(@"点击了右上角");
         self.mClipRectView.isMove = YES;
     }
-    else if (CGRectContainsPoint(cornerLeftBottomRect, begainPoint))
+    else if (CGRectContainsPoint(self.mClipRectView.cornerLeftBottomRect, begainPoint))
     {
         self.mClipRectView.cornerType = CornerTypeLeftBottom;
         NSLog(@"点击了左下角");
         self.mClipRectView.isMove = YES;
     }
-    else if (CGRectContainsPoint(cornerRightBottomRect, begainPoint))
+    else if (CGRectContainsPoint(self.mClipRectView.cornerRightBottomRect, begainPoint))
     {
         self.mClipRectView.cornerType = CornerTypeRightBottom;
         NSLog(@"点击了右下角");
         self.mClipRectView.isMove = YES;
     }
 }
-
 
 - (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
 {
@@ -172,15 +163,46 @@
     self.mClipRectView.center = newCenter;
     self.clipRect = self.mClipRectView.frame;
     
-    switch (self.mClipRectView.cornerType) {
+    CGFloat clipRectHeight = self.clipRect.size.height;
+    CGFloat clipRectWith = self.clipRect.size.width;
+    switch (self.mClipRectView.cornerType)
+    {
         case CornerTypeLeftTop:
-            self.clipRect = CGRectMake(self.mBeginRect.origin.x + pointOffset.x, self.mBeginRect.origin.y + pointOffset.y, self.mBeginRect.size.width - pointOffset.x, self.mBeginRect.size.height - pointOffset.y);
+            if (clipRectHeight == kClipRectMiniWith && clipRectWith == kClipRectMiniWith)
+            {
+                self.clipRect = CGRectMake(CGRectGetMaxX(self.mBeginRect) - kClipRectMiniWith, CGRectGetMaxY(self.mBeginRect) - kClipRectMiniWith, self.mBeginRect.size.width - pointOffset.x, self.mBeginRect.size.height - pointOffset.y);
+            }
+            else if (clipRectHeight == kClipRectMiniWith)
+            {
+                self.clipRect = CGRectMake(self.mBeginRect.origin.x + pointOffset.x, CGRectGetMaxY(self.mBeginRect) - kClipRectMiniWith, self.mBeginRect.size.width - pointOffset.x, self.mBeginRect.size.height - pointOffset.y);
+            }
+            else if (clipRectWith == kClipRectMiniWith)
+            {
+                self.clipRect = CGRectMake(CGRectGetMaxX(self.mBeginRect) - kClipRectMiniWith, self.mBeginRect.origin.y + pointOffset.y, self.mBeginRect.size.width - pointOffset.x, self.mBeginRect.size.height - pointOffset.y);
+            }
+            else
+            {
+                self.clipRect = CGRectMake(self.mBeginRect.origin.x + pointOffset.x, self.mBeginRect.origin.y + pointOffset.y, self.mBeginRect.size.width - pointOffset.x, self.mBeginRect.size.height - pointOffset.y);
+            }
             break;
         case CornerTypeRightTop:
-            self.clipRect = CGRectMake(self.mBeginRect.origin.x, self.mBeginRect.origin.y + pointOffset.y, self.mBeginRect.size.width + pointOffset.x, self.mBeginRect.size.height - pointOffset.y);
+            if (clipRectHeight == kClipRectMiniWith)
+            {
+                self.clipRect = CGRectMake(self.mBeginRect.origin.x, CGRectGetMaxY(self.mBeginRect) - kClipRectMiniWith, self.mBeginRect.size.width + pointOffset.x,self.mBeginRect.size.height - pointOffset.y);
+                }
+                else
+                {
+                self.clipRect = CGRectMake(self.mBeginRect.origin.x, self.mBeginRect.origin.y + pointOffset.y, self.mBeginRect.size.width + pointOffset.x, self.mBeginRect.size.height - pointOffset.y);
+                }
             break;
         case CornerTypeLeftBottom:
-            self.clipRect = CGRectMake(self.mBeginRect.origin.x + pointOffset.x, self.mBeginRect.origin.y, self.mBeginRect.size.width - pointOffset.x, self.mBeginRect.size.height + pointOffset.y);
+            if (clipRectWith == kClipRectMiniWith) {
+                self.clipRect = CGRectMake(CGRectGetMaxX(self.mBeginRect) - kClipRectMiniWith, self.mBeginRect.origin.y, self.mBeginRect.size.width - pointOffset.x, self.mBeginRect.size.height + pointOffset.y);
+            }
+            else
+            {
+                self.clipRect = CGRectMake(self.mBeginRect.origin.x + pointOffset.x, self.mBeginRect.origin.y, self.mBeginRect.size.width - pointOffset.x, self.mBeginRect.size.height + pointOffset.y);
+            }
             break;
         case CornerTypeRightBottom:
             self.clipRect = CGRectMake(self.mBeginRect.origin.x, self.mBeginRect.origin.y, self.mBeginRect.size.width + pointOffset.x, self.mBeginRect.size.height + pointOffset.y);
@@ -190,6 +212,7 @@
             break;
     }
     [self.mClipRectView setNeedsDisplay];
+    [self setNeedsDisplay];
 }
 
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
@@ -206,27 +229,27 @@
 //    NSLog(@"clipRect````````%@",NSStringFromCGRect(clipRect));
 //    NSLog(@"mImageViewFrame````````%@",NSStringFromCGRect(self.mImageView.frame));
 //     NSLog(@"mImageViewBounds````````%@",NSStringFromCGRect(self.mImageView.bounds));
-    CGSize miniSize = CGSizeMake(50, 50);
+    CGSize miniSize = CGSizeMake(kClipRectMiniWith, kClipRectMiniWith);
     // 限制裁剪框的最小范围和最大范围
     if (clipRect.size.width <= miniSize.width)
     {
         clipRect.size.width = miniSize.width;
-        NSLog(@"最小宽度1");
+//        NSLog(@"最小宽度1");
     }
     if (clipRect.size.height <= miniSize.height)
     {
         clipRect.size.height = miniSize.height;
-        NSLog(@"最小高度2");
+//        NSLog(@"最小高度2");
     }
     if (clipRect.size.width >= maxSize.width)
     {
         clipRect.size.width = maxSize.width;
-        NSLog(@"最大宽度3");
+//        NSLog(@"最大宽度3");
     }
     if (clipRect.size.height >= maxSize.height)
     {
         clipRect.size.height = maxSize.height;
-        NSLog(@"最大高度4");
+//        NSLog(@"最大高度4");
     }
     
     // 限制裁剪框不可以拖出被裁剪的视图
@@ -254,13 +277,14 @@
 {
     CGRect imageRect = [self trueClipRect];
 
+    NSLog(@"clipImage-------%d",(int)_image.imageOrientation);
     CGImageRef imageRef = CGImageCreateWithImageInRect([_image CGImage], imageRect);
-    UIImage *result = [UIImage imageWithCGImage:imageRef
-                                          scale:_image.scale
+    UIImage *newImage = [UIImage imageWithCGImage:imageRef
+                                          scale:1
                                     orientation:_image.imageOrientation];
     CGImageRelease(imageRef);
-    
-    return result;
+    NSLog(@"clipImage2-------%d",(int)newImage.imageOrientation);
+    return newImage;
 }
 
 
@@ -276,10 +300,10 @@
 #pragma mark - 真实的裁减范围
 - (CGRect)trueClipRect
 {
-    CGRect trueClipRect = CGRectMake(_clipRect.origin.x * _image.scale * self.mScalingFactor,
-                                  _clipRect.origin.y * _image.scale * self.mScalingFactor,
-                                  _clipRect.size.width * _image.scale * self.mScalingFactor,
-                                  _clipRect.size.height * _image.scale * self.mScalingFactor);
+    CGRect trueClipRect = CGRectMake(_clipRect.origin.x * self.mScalingFactor,
+                                     _clipRect.origin.y * self.mScalingFactor,
+                                   _clipRect.size.width * self.mScalingFactor,
+                                  _clipRect.size.height * self.mScalingFactor);
     return trueClipRect;
 }
 

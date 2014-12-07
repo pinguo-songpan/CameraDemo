@@ -25,7 +25,8 @@
     self = [super init];
     if (self)
     {
-        self.backgroundColor = [[UIColor yellowColor] colorWithAlphaComponent:0.5];
+//        self.backgroundColor = [[UIColor yellowColor] colorWithAlphaComponent:0.5];
+        self.backgroundColor = [UIColor clearColor];
         [self buildUI];
         
     }
@@ -135,33 +136,23 @@
 {
     [super drawRect:rect];
     CGContextRef ctx = UIGraphicsGetCurrentContext();
-    
-    CGContextSetRGBFillColor(ctx,   0.0, 0.0, 0.0, 0.7);
-//    CGContextSetRGBStrokeColor(ctx, 0.6, 0.6, 0.6, 1.0);
+
     [[UIColor whiteColor] setStroke];
     CGFloat lengths[2];
     lengths[0] = 0.0;
-    lengths[1] = 2.0;
-//    CGContextSetLineCap(ctx, kCGLineCapRound);
-    CGContextSetLineWidth(ctx, 3.0);
-//    CGContextSetLineDash(ctx, 0.0f, lengths, 2);
-    
-    CGFloat width = self.bounds.size.width;
-    CGFloat height = self.bounds.size.height;
-    
-//    CGRect clipsRectS[] =
-//    {
-//        CGRectMake(0, 0, width, self.clipRect.origin.y),
-//        CGRectMake(0, self.clipRect.origin.y, self.clipRect.origin.x, self.clipRect.size.height),
-//        CGRectMake(0, self.clipRect.origin.y + self.clipRect.size.height, width, height - (self.clipRect.origin.y + self.clipRect.size.height)),
-//        CGRectMake(self.clipRect.origin.x + self.clipRect.size.width, self.clipRect.origin.y, width -(self.clipRect.origin.x + self.clipRect.size.width), self.clipRect.size.height),
-//    };
-
-//    CGContextClipToRects(ctx, clipsRectS, sizeof(clipsRectS) / sizeof(clipsRectS[0]));
+    lengths[1] = 4.0;
+    CGContextSetLineCap(ctx, kCGLineCapRound);
+    CGContextSetLineWidth(ctx, 4.0);
     
     CGRect strokeRect = CGRectMake(0, 0, self.clipRect.size.width, self.clipRect.size.height);
-//    CGContextFillRect(ctx, rect);
+    CGRect strokeRect2 = CGRectMake(self.clipRect.size.width / 4, 0, self.clipRect.size.width / 2, self.clipRect.size.height);
+    CGRect strokeRect3  = CGRectMake(0, self.clipRect.size.height / 4, self.clipRect.size.width, self.clipRect.size.height / 2);
+
     CGContextStrokeRect(ctx, strokeRect);
+    CGContextSetLineDash(ctx, 0.0f, lengths, 2);
+    CGContextStrokeRectWithWidth(ctx, strokeRect2, 1);
+    CGContextStrokeRectWithWidth(ctx, strokeRect3, 1);
+    
     UIGraphicsEndImageContext();
 }
 @end

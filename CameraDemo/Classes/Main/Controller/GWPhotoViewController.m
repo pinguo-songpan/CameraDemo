@@ -16,6 +16,7 @@
 @interface GWPhotoViewController () <UICollectionViewDataSource, UICollectionViewDelegate>
 
 @property (nonatomic, weak) UICollectionView *mCollectionView;
+@property (nonatomic, weak) UIBarButtonItem *mRightItem;
 
 @end
 
@@ -28,7 +29,9 @@
     {
         self.title = @"照片";
         UIBarButtonItem *rightItem = [[UIBarButtonItem alloc] initWithTitle:@"编辑" style:UIBarButtonItemStylePlain target:self action:@selector(rightItemClick:)];
+        rightItem.enabled = NO;
         [self.navigationItem setRightBarButtonItem:rightItem];
+        self.mRightItem = rightItem;
     }
     return self;
 }
@@ -41,7 +44,6 @@
     }
     return _selectedPhotos;
 }
-
 
 - (void)viewDidLoad
 {
@@ -112,11 +114,19 @@
             [alertView show];
         }
     }
+    
+    if (self.selectedPhotos.count > 0) {
+        self.mRightItem.enabled = YES;
+    }
+    else
+    {
+        self.mRightItem.enabled = NO;
+    }
 }
 
 - (void)rightItemClick:(UIButton *)button
 {
-    if (self.selectedPhotos > 0)
+    if (self.selectedPhotos.count > 0)
     {
         GWPhotoEditViewController *photoEdit = [[GWPhotoEditViewController alloc] init];
         photoEdit.photo = self.selectedPhotos.firstObject;

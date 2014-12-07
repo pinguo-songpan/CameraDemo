@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		BE1EC0EE1A2C684900108FD0 /* GWCornerView.m in Sources */ = {isa = PBXBuildFile; fileRef = BE1EC0ED1A2C684900108FD0 /* GWCornerView.m */; };
+		BE2805611A3451F100E2B058 /* UIImage+FixOrientation.m in Sources */ = {isa = PBXBuildFile; fileRef = BE2805601A3451F100E2B058 /* UIImage+FixOrientation.m */; };
 		BE3DBDA91A25724600390AB7 /* GWPhotoAlbumTool.m in Sources */ = {isa = PBXBuildFile; fileRef = BE3DBDA81A25724600390AB7 /* GWPhotoAlbumTool.m */; };
 		BE3DBDAD1A25AC3200390AB7 /* GWPhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BE3DBDAC1A25AC3200390AB7 /* GWPhotoViewController.m */; };
 		BE3DBDB01A25B43E00390AB7 /* GWPhotoViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BE3DBDAF1A25B43E00390AB7 /* GWPhotoViewCell.m */; };
@@ -41,6 +42,8 @@
 /* Begin PBXFileReference section */
 		BE1EC0EC1A2C684900108FD0 /* GWCornerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GWCornerView.h; sourceTree = "<group>"; };
 		BE1EC0ED1A2C684900108FD0 /* GWCornerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GWCornerView.m; sourceTree = "<group>"; };
+		BE28055F1A3451F100E2B058 /* UIImage+FixOrientation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+FixOrientation.h"; sourceTree = "<group>"; };
+		BE2805601A3451F100E2B058 /* UIImage+FixOrientation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+FixOrientation.m"; sourceTree = "<group>"; };
 		BE3DBDA71A25724600390AB7 /* GWPhotoAlbumTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GWPhotoAlbumTool.h; sourceTree = "<group>"; };
 		BE3DBDA81A25724600390AB7 /* GWPhotoAlbumTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GWPhotoAlbumTool.m; sourceTree = "<group>"; };
 		BE3DBDAA1A25732A00390AB7 /* GWSingleton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GWSingleton.h; sourceTree = "<group>"; };
@@ -98,6 +101,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		BE28055B1A34519900E2B058 /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				BE28055F1A3451F100E2B058 /* UIImage+FixOrientation.h */,
+				BE2805601A3451F100E2B058 /* UIImage+FixOrientation.m */,
+			);
+			path = Category;
+			sourceTree = "<group>";
+		};
 		BE3DBDB11A25C67D00390AB7 /* Xibs */ = {
 			isa = PBXGroup;
 			children = (
@@ -229,6 +241,7 @@
 		BED37D301A241D32000826D7 /* Other */ = {
 			isa = PBXGroup;
 			children = (
+				BE28055B1A34519900E2B058 /* Category */,
 				BEF321D01A2480700087F43A /* CameraDemo-Prefix.pch */,
 				BED37D331A241D32000826D7 /* main.m */,
 				BED37D311A241D32000826D7 /* AppDelegate.h */,
@@ -376,6 +389,7 @@
 			files = (
 				BEF321D71A248B2B0087F43A /* GWPhotoAlbum.m in Sources */,
 				BE3DBDAD1A25AC3200390AB7 /* GWPhotoViewController.m in Sources */,
+				BE2805611A3451F100E2B058 /* UIImage+FixOrientation.m in Sources */,
 				BEF321D41A248ABC0087F43A /* GWPhoto.m in Sources */,
 				BEF321CF1A247EF60087F43A /* GWPhotoAlbumController.m in Sources */,
 				BE7885281A2B50C7002B742D /* GWImageClipView.m in Sources */,

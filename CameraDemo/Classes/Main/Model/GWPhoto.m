@@ -7,11 +7,12 @@
 //
 
 #import "GWPhoto.h"
-
+#import <AssetsLibrary/AssetsLibrary.h>
+#import "UIImage+FixOrientation.h"
 @interface GWPhoto ()
-@property (nonatomic, strong) ALAsset *asset;
 
 @end
+
 @implementation GWPhoto
 
 - (id)initWithAsset:(ALAsset *)asset
@@ -21,16 +22,23 @@
     {
         self.asset = asset;
         self.imageSmail = [[UIImage alloc] initWithCGImage:[asset thumbnail]];
-        ALAssetRepresentation *assetRep = [asset defaultRepresentation];
-        self.imageSource = [[UIImage alloc] initWithCGImage:[assetRep fullResolutionImage]];
     }
     return self;
 }
 
-- (NSString *)description
+//- (NSString *)description
+//{
+//    return [NSString stringWithFormat:@"{isSelected = %d, \nasset = %@}", self.isSelected, self.asset];
+//}
+
+- (UIImage *)imageSource
 {
-    return [NSString stringWithFormat:@"{isSelected = %d, \nasset = %@}", self.isSelected, self.asset];
+    // 用到时才加载原图
+    ALAssetRepresentation *assetRep = [_asset defaultRepresentation];
+    UIImage  *imageSource = [[UIImage alloc] initWithCGImage:[assetRep fullResolutionImage] scale:1 orientation:(UIImageOrientation)assetRep.orientation];
+    // 固定image的方向
+    imageSource = [UIImage fixOrientation:imageSource];
+  
+    return imageSource;
 }
-
-
 @end

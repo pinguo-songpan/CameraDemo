@@ -63,16 +63,8 @@ static NSString *ID = @"identifierCollectionViewCell";
 {
     [super viewDidLoad];
     
-    CGFloat loadW = self.view.frame.size.width * 0.5;
-    CGFloat loadH = self.view.frame.size.width * 0.65;
-    UIActivityIndicatorView *loadView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
-    loadView.color = [UIColor darkGrayColor];
-    loadView.center = CGPointMake(loadW, loadH);
-    [self.view addSubview:loadView];
-    [loadView startAnimating];
-    // 1.遍历相册里的图片
+    // 1.获取相册数据，遍历相册里的图片
     [GWPhotoAlbumTool fetchPhotoAlbumsWithType:ALAssetsGroupAll succes:^(NSArray *photoAlbums) {
-        [loadView stopAnimating];
         self.mPhotoAlbums = photoAlbums;
         [self.mCollectionView reloadData];
     } error:^(NSError *error) {

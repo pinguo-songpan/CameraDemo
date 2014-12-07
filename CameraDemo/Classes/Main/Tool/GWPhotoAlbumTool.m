@@ -70,31 +70,12 @@ static GWPhotoAlbumTool *_instance = nil;
     }];
 }
 
-#pragma mark - 私有方法
+#pragma mark -  私有方法
 + (void)fetchPhotoAlbumWithType:(ALAssetsGroupType)groupType succes:(PhotoAlbumSuccessBlock)success error:(PhotoAlbumFailureBlock)errorBlock
 {
     GWPhotoAlbumTool *photoAlbumTool = [GWPhotoAlbumTool sharePhotoAlbumTool];
     [photoAlbumTool.assetsLibrary enumerateGroupsWithTypes:groupType usingBlock:^(ALAssetsGroup *group, BOOL *stop) {
-        GWPhotoAlbum *photoAlbum = [[GWPhotoAlbum alloc] init];
-        photoAlbum.name = [group valueForProperty:ALAssetsGroupPropertyName];
-        photoAlbum.posterImage = [[UIImage alloc] initWithCGImage:group.posterImage];
-        photoAlbum.type = [group valueForProperty:ALAssetsGroupPropertyType];
-        photoAlbum.persistentID = [group valueForProperty:ALAssetsGroupPropertyPersistentID];
-        photoAlbum.url = [group valueForProperty:ALAssetsGroupPropertyURL];
-        NSMutableArray *photos = [NSMutableArray array];
-        [group enumerateAssetsUsingBlock:^(ALAsset *resultAlAsset, NSUInteger index, BOOL *stop) {
-            if (index == group.numberOfAssets-1)
-            {
-                *stop = YES;
-            }
-            NSString *assetType = [resultAlAsset valueForProperty:ALAssetPropertyType];
-            if ([assetType isEqualToString:ALAssetTypePhoto])
-            {
-                GWPhoto *photo = [[GWPhoto alloc] initWithAsset:resultAlAsset];
-                [photos addObject:photo];
-            }
-        }];
-        photoAlbum.photos = photos;
+        GWPhotoAlbum *photoAlbum = [[GWPhotoAlbum alloc] initWithAssetsGruop:group];
             if (success)
             {
                 success(photoAlbum);
@@ -124,42 +105,48 @@ static GWPhotoAlbumTool *_instance = nil;
 
 + (void)addAssetURL:(NSURL*)assetURL toAlbum:(NSString*)albumName failure:(SaveImageFailureBlock)failureBlock
 {
-    GWPhotoAlbumTool *photoAlbumTool = [GWPhotoAlbumTool sharePhotoAlbumTool];
+    __weak ALAssetsLibrary *assetsLibrary = [GWPhotoAlbumTool sharePhotoAlbumTool].assetsLibrary;
+     __block BOOL isNotFind = YES;
     
-     __block BOOL albumWasFound = NO;
-    
-    [photoAlbumTool.assetsLibrary enumerateGroupsWithTypes:ALAssetsGroupAlbum usingBlock:^(ALAssetsGroup *group, BOOL *stop) {
-        if ([albumName compare:[group valueForProperty:ALAssetsGroupPropertyName]] == NSOrderedSame) {
-            // 找到相同的相册
-            albumWasFound = YES;
-            [photoAlbumTool.assetsLibrary assetForURL:assetURL resultBlock:^(ALAsset *asset) {
+    [assetsLibrary enumerateGroupsWithTypes:ALAssetsGroupAll usingBlock:^(ALAssetsGroup *group, BOOL *stop) {
+        if ([albumName compare:[group valueForProperty:ALAssetsGroupPropertyName]] == NSOrderedSame)
+        {
+            *stop = YES;
+            isNotFind = NO; // 找到同名相册
+            [assetsLibrary assetForURL:assetURL resultBlock:^(ALAsset *asset) {
                 [group addAsset:asset];
-                
-                failureBlock(nil);
             } failureBlock:^(NSError *error) {
-                return ;
+                if (failureBlock)
+                {
+                    failureBlock(error);
+                }
             }];
         }
-        
-        if ((group == nil) && (albumWasFound == NO)) {
-            __weak ALAssetsLibrary *weakSelf = photoAlbumTool.assetsLibrary;
-            [photoAlbumTool.assetsLibrary addAssetsGroupAlbumWithName:albumName resultBlock:^(ALAssetsGroup *group) {
-                [weakSelf assetForURL:assetURL resultBlock:^(ALAsset *asset) {
+        // 遍历结束且没找到有同名相册时 新建相册
+        if (group == nil && isNotFind)
+        {
+            [assetsLibrary addAssetsGroupAlbumWithName:albumName resultBlock:^(ALAssetsGroup *newgroup) {
+                [assetsLibrary assetForURL:assetURL resultBlock:^(ALAsset *asset) {
                     // 增加照片到新建相册
-                    [group addAsset:asset];
-                    
-                    failureBlock(nil);
+                    [newgroup addAsset:asset];
                 } failureBlock:^(NSError *error) {
-                    
+                    if (failureBlock)
+                    {
+                        failureBlock(error);
+                    }
                 }];
             } failureBlock:^(NSError *error) {
-                
+                if (failureBlock)
+                {
+                    failureBlock(error);
+                }
             }];
-            return ;
         }
-        
+ 
     } failureBlock:^(NSError *error) {
-
+        if (failureBlock) {
+            failureBlock(error);
+        }
     }];
 }
 

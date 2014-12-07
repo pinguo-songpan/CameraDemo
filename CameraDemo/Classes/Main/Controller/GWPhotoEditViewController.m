@@ -11,6 +11,9 @@
 #import "GWPhoto.h"
 #import "GWPhotoAlbumTool.h"
 
+#import <AssetsLibrary/AssetsLibrary.h>
+#import "GWPhotoAlbumTool.h"
+
 @interface GWPhotoEditViewController ()
 @property (nonatomic, weak) UIToolbar   *mToolBar;
 @property (nonatomic, weak) UIImageView *mImageView;
@@ -18,7 +21,6 @@
 @property (nonatomic, weak) UIButton *mClipDoneBtn;
 @property (nonatomic, weak) UIButton *mRectEffectBtn; // 矩形滤镜按钮
 @property (nonatomic, weak) GWImageClipView *mImageClipView;
-@property (nonatomic, weak) UIImageView *mFilterImageView;
 
 @end
 
@@ -45,8 +47,7 @@
 - (void)buildUI
 {
     // 显示的图片
-//    UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(10, 64+10, iPhoneW-20, iPhoneH-64-44-20)];
-    UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(10, 64+10, iPhoneW-20, 260)];
+    UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(10, 64+10, iPhoneW-20, iPhoneH-64-44-20)];
     imageView.contentMode = UIViewContentModeScaleAspectFit;
     imageView.backgroundColor = [UIColor redColor];
     [self.view addSubview:imageView];
@@ -57,11 +58,6 @@
     imageClipView.hidden = YES;
     [self.view addSubview:imageClipView];
     self.mImageClipView = imageClipView;
-    
-    UIImageView *filterImageView = [[UIImageView alloc] initWithFrame:CGRectMake(10, 350, iPhoneW-20, 260)];
-    filterImageView.contentMode = UIViewContentModeScaleAspectFit;
-    [self.view addSubview:filterImageView];
-    self.mFilterImageView = filterImageView;
     
     // 添加工具栏
     UIToolbar *toolBar = [[UIToolbar alloc] init];
@@ -133,14 +129,29 @@
     
     [GWPhotoAlbumTool saveImage:self.mImageView.image toAlbum:@"Camera360" failure:^(NSError *error) {
         if (error) {
-            NSLog(@"%@",error.localizedDescription);
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"保存失败"
+                                                            message:nil delegate:nil
+                                                  cancelButtonTitle:@"确定"
+                                                  otherButtonTitles:nil, nil
+                                  ];
+            [alert show];
         }
     }];
+    
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"保存成功" message:nil
+                                                   delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil
+                          ];
+    [alert show];
+    
+    
     
 }
 
 - (void)clipDonePressed:(UIButton *)sender
 {
+    CGRect clipRect = self.mImageClipView.trueClipRect;
+    NSLog(@"截取的范围是：%@", NSStringFromCGRect(clipRect));
+    
     UIImage *image = [self.mImageClipView clipImage];
     self.mImageView.image = image;
     self.mOldImage = image;
@@ -157,7 +168,6 @@
     NSLog(@"截取的范围是：%@", NSStringFromCGRect(clipRect));
     
     UIImage *image = [self hebingImage];
-//    self.mFilterImageView.image = image;
     self.mImageView.image = image;
     self.mOldImage = image;
     [self displayToolbarNav];
@@ -174,6 +184,7 @@
     [filterImage drawInRect:preImageRect];
     UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
+//    NSLog(@"------size%@------scale:%f",NSStringFromCGSize(newImage.size),newImage.scale);
     return newImage;
 }
 
@@ -251,6 +262,13 @@
     _photo = photo;
     _mOldImage = photo.imageSource;
     _mImageView.image = photo.imageSource;
+}
+
+- (void)setMOldImage:(UIImage *)mOldImage
+{
+    _mOldImage = mOldImage;
+    
+    NSLog(@"setMOldImage-----%d",(int)mOldImage.imageOrientation);
 }
 
 @end
