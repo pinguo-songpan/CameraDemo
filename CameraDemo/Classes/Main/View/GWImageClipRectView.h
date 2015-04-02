@@ -22,9 +22,6 @@ typedef enum : NSUInteger {
  *  图像裁剪框，用于显示裁剪图片范围
  */
 @interface GWImageClipRectView : UIView
-{
-    CGRect _clipRect;  // 截取范围
-}
 
 /**
  *  控制柄类型
@@ -49,21 +46,21 @@ typedef enum : NSUInteger {
 /**
  *  左上角控制柄范围
  */
-@property (nonatomic, assign) CGRect cornerLeftTopRect;
+@property (nonatomic, assign,readonly) CGRect cornerLeftTopRect;
 
 /**
  *  右上角控制柄范围
  */
-@property (nonatomic, assign) CGRect cornerRightTopRect;
+@property (nonatomic, assign, readonly) CGRect cornerRightTopRect;
 
 /**
  *  左下角控制柄范围
  */
-@property (nonatomic, assign) CGRect cornerLeftBottomRect;
+@property (nonatomic, assign, readonly) CGRect cornerLeftBottomRect;
 
 /**
  *  右上角控制柄范围
  */
-@property (nonatomic, assign) CGRect cornerRightBottomRect;
+@property (nonatomic, assign, readonly) CGRect cornerRightBottomRect;
 
 @end

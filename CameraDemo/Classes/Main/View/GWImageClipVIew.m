@@ -96,32 +96,32 @@
     if (CGRectContainsPoint(self.mClipRectView.frame, begainPoint))
     {
         self.mClipRectView.isMove = YES;
-        NSLog(@"可以移动");
+        MyLog(@"可以移动");
     }
     
     // 判断用户点击拖动裁剪框的哪个角落
     if (CGRectContainsPoint(self.mClipRectView.cornerLeftTopRect, begainPoint))
     {
         self.mClipRectView.cornerType = CornerTypeLeftTop;
-        NSLog(@"点击了左上角");
+        MyLog(@"点击了左上角");
         self.mClipRectView.isMove = YES;
     }
     else if (CGRectContainsPoint(self.mClipRectView.cornerRightTopRect, begainPoint))
     {
         self.mClipRectView.cornerType = CornerTypeRightTop;
-        NSLog(@"点击了右上角");
+        MyLog(@"点击了右上角");
         self.mClipRectView.isMove = YES;
     }
     else if (CGRectContainsPoint(self.mClipRectView.cornerLeftBottomRect, begainPoint))
     {
         self.mClipRectView.cornerType = CornerTypeLeftBottom;
-        NSLog(@"点击了左下角");
+        MyLog(@"点击了左下角");
         self.mClipRectView.isMove = YES;
     }
     else if (CGRectContainsPoint(self.mClipRectView.cornerRightBottomRect, begainPoint))
     {
         self.mClipRectView.cornerType = CornerTypeRightBottom;
-        NSLog(@"点击了右下角");
+        MyLog(@"点击了右下角");
         self.mClipRectView.isMove = YES;
     }
 }
@@ -230,22 +230,22 @@
     if (clipRect.size.width <= miniSize.width)
     {
         clipRect.size.width = miniSize.width;
-//        NSLog(@"最小宽度1");
+//        MyLog(@"最小宽度1");
     }
     if (clipRect.size.height <= miniSize.height)
     {
         clipRect.size.height = miniSize.height;
-//        NSLog(@"最小高度2");
+//        MyLog(@"最小高度2");
     }
     if (clipRect.size.width >= maxSize.width)
     {
         clipRect.size.width = maxSize.width;
-//        NSLog(@"最大宽度3");
+//        MyLog(@"最大宽度3");
     }
     if (clipRect.size.height >= maxSize.height)
     {
         clipRect.size.height = maxSize.height;
-//        NSLog(@"最大高度4");
+//        MyLog(@"最大高度4");
     }
     
     // 限制裁剪框不可以拖出被裁剪的视图

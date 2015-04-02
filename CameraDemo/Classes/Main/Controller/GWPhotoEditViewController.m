@@ -238,7 +238,7 @@
     [filterImage drawInRect:preImageRect];
     UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
-//    NSLog(@"------size%@------scale:%f",NSStringFromCGSize(newImage.size),newImage.scale);
+//    MyLog(@"------size%@------scale:%f",NSStringFromCGSize(newImage.size),newImage.scale);
     return newImage;
 }
 
@@ -257,8 +257,6 @@
     
     CGImageRef cgImage = [ctx createCGImage:filter.outputImage fromRect:ciImage.extent];
     UIImage *filterImage = [UIImage imageWithCGImage:cgImage];
-    
-    //    self.mFilterImageView.image = [UIImage imageWithCGImage:cgImage];
     
     CGImageRelease(cgImage);
     return filterImage;

@@ -19,7 +19,7 @@
 @end
 
 @implementation GWImageClipRectView
-
+@synthesize clipRect = _clipRect;
 - (instancetype)init
 {
     self = [super init];

@@ -26,10 +26,4 @@
     return self;
 }
 
-//-(BOOL)pointInside:(CGPoint)point withEvent:(UIEvent *)event
-//{
-//    [super pointInside:point withEvent:event];
-//    return YES;
-//}
-
 @end
